@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ShoppingCartDemo.Models;
 
 namespace ShoppingCartDemo.Controllers
 {
@@ -15,9 +16,16 @@ namespace ShoppingCartDemo.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            IEnumerable<Product> products = new ShoppingCart
+            {
+                Products = new List<Product> {
+                    new Product{Name ="Ball", Price =  2.50m, Category = "toy"},
+                    new Product{Name = "Chips", Price = 2.50m, Category = "food"},
+                    new Product{Name = "Game", Price = 20.20m, Category="toy"},
+                }
+            };
 
-            return View();
+            return View(products);
         }
 
         public ActionResult Contact()

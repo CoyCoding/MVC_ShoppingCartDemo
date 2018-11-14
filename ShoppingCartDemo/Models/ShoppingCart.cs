@@ -19,5 +19,19 @@ namespace ShoppingCartDemo.Models
         {
             return GetEnumerator();
         }
+
+        public decimal CartTotal()
+        {
+            decimal total = 0m;
+
+            foreach(Product product in Products)
+            {
+                total += product.Price;
+            }
+
+            return total;
+        }
+
+
     }
 }

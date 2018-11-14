@@ -19,5 +19,6 @@ namespace ShoppingCartDemo.Models
 
         public string Category { get; set; }
 
+        public string Seller { get; set; }
     }
 }
