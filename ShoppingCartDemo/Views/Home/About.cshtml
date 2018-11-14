@@ -1,6 +1,7 @@
 ﻿@model ShoppingCartDemo.Models.ShoppingCart
 
 @{
+    string test = "toy";
     ViewBag.Title = "Shopping cart display";
 }
 <h2>@ViewBag.Title.</h2>
@@ -9,3 +10,17 @@
 <p>Model.Sum(p => p.Price) : @Model.Sum(prod => prod.Price)</p>
 <h1>OR</h1>
 <p>Model.CartTotal(): @Model.CartTotal()</p>
+
+<h3>Price of only toys</h3>
+<text id="category" ></text="">
+<button id="total">Total</button>
+<p>@Model.Where(p => p.Category == test).Sum(p=> p.Price)</p>
+
+
+ @section Scripts{
+<script>
+        $("#total").click(function () {
+            ;
+        });
+</script>
+     }
