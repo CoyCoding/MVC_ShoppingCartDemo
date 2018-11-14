@@ -25,8 +25,6 @@ namespace ShoppingCartDemo.Controllers
                 }
             };
 
-            products.CartTotal();
-
             return View(products);
         }
 
