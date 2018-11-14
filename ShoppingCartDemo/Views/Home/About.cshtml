@@ -5,4 +5,7 @@
 }
 <h2>@ViewBag.Title.</h2>
 
-<p>@Model.Sum(prod => prod.Price)</p>
+<h3>Product total can be found with:</h3>
+<p>Model.Sum(p => p.Price) : @Model.Sum(prod => prod.Price)</p>
+<h1>OR</h1>
+<p>Model.CartTotal(): @Model.CartTotal()</p>
