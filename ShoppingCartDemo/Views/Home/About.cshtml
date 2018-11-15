@@ -1,4 +1,4 @@
-﻿@model ShoppingCartDemo.Models.ShoppingCart
+﻿@model decimal
 
 @{
     ViewBag.Title = "Shopping cart display";
@@ -6,17 +6,10 @@
 <h2>@ViewBag.Title.</h2>
 
 <h3>Product total can be found with:</h3>
-<p>Model.Sum(p => p.Price) : @Model.Sum(prod => prod.Price)</p>
-<h1>OR</h1>
-<p>Model.CartTotal(): @Model.CartTotal()</p>
+<p>Total value is $@Model</p>
 
-<h3>Price of only toys</h3>
 
 
 @section Scripts{
-<script>
-        $("#total").click(function () {
-            
-        });
-</script>
+
 }

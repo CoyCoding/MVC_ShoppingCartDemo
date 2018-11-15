@@ -6,32 +6,21 @@ using System.Web;
 
 namespace ShoppingCartDemo.Models
 {
-    public class ShoppingCart : IEnumerable<Product>
+    public class ShoppingCart 
     {
-        public List<Product> Products { get; set; }
+        private ITotalCalculator _calculator;
 
-        public IEnumerator<Product> GetEnumerator()
+        public IEnumerable<Product> Products { get; set; }
+
+        public ShoppingCart(ITotalCalculator calculator)
         {
-            return Products.GetEnumerator();
+            _calculator = calculator;
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
+        public decimal CalculateProductTotal()
         {
-            return GetEnumerator();
+            return _calculator.CartTotal(Products);
         }
-
-        public decimal CartTotal()
-        {
-            decimal total = 0m;
-
-            foreach(Product product in Products)
-            {
-                total += product.Price;
-            }
-
-            return total;
-        }
-
 
     }
 }
