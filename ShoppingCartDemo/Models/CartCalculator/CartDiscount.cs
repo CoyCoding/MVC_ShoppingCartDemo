@@ -9,7 +9,14 @@ namespace ShoppingCartDemo.Models.CartCalculator
     {
         public decimal Applydiscount(decimal cartTotal)
         {
-            return (cartTotal - (10m / 100m * cartTotal));
+            if (cartTotal >= 100)
+            {
+                return (cartTotal - (5m / 100m * cartTotal));
+            }
+            else
+            {
+                return cartTotal;
+            }
         }
     }
 }

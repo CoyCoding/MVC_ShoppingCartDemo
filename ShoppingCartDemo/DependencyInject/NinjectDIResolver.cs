@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using ShoppingCartDemo.Models;
 using Ninject;
+using ShoppingCartDemo.Models.CartCalculator;
 
 namespace ShoppingCartDemo.DependencyInject
 {
@@ -31,12 +32,13 @@ namespace ShoppingCartDemo.DependencyInject
         private void AddBindings()
         {
             kernel.Bind<ITotalCalculator>().To<TotalCalculator>();
+            kernel.Bind<ICartDiscount>().To<CartDiscount>();
         }
 
-        private static void RegisterServices (IKernel kernel)
-        {
-            System.Web.Mvc.DependencyResolver.SetResolver(new
-                ShoppingCartDemo.DependencyInject.NinjectDIResolver(kernel));
-        }
+        //private static void RegisterServices (IKernel kernel)
+        //{
+        //    System.Web.Mvc.DependencyResolver.SetResolver(new
+        //        ShoppingCartDemo.DependencyInject.NinjectDIResolver(kernel));
+        //}
     }
 }
