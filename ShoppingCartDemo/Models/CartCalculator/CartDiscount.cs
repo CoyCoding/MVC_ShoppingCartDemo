@@ -11,7 +11,7 @@ namespace ShoppingCartDemo.Models.CartCalculator
         {
             if (cartTotal >= 100)
             {
-                return (cartTotal - (5m / 100m * cartTotal));
+                return (cartTotal * .95m);
             }
             else
             {
