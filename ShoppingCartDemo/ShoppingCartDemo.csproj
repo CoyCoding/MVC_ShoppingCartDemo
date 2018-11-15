@@ -221,13 +221,15 @@
       <DependentUpon>201811140652143_InitialModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\CartCalculator\CartDiscount.cs" />
+    <Compile Include="Models\CartCalculator\ICartDiscount.cs" />
     <Compile Include="Models\Identity\AccountViewModels.cs" />
     <Compile Include="Models\Identity\IdentityModels.cs" />
     <Compile Include="Models\Identity\ManageViewModels.cs" />
-    <Compile Include="Models\ITotalCalculator.cs" />
+    <Compile Include="Models\CartCalculator\ITotalCalculator.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ShoppingCart.cs" />
-    <Compile Include="Models\TotalCalculator.cs" />
+    <Compile Include="Models\CartCalculator\TotalCalculator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
