@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShoppingCartDemo.Models.CartCalculator;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,9 +8,23 @@ namespace ShoppingCartDemo.Models
 {
     public class TotalCalculator : ITotalCalculator
     {
+        private ICartDiscount _discount;
+
+        /// <summary>
+        /// Constructor for TotalCalculator N-Inject 
+        /// </summary>
+        public TotalCalculator(ICartDiscount discountParam)
+        {
+            _discount = discountParam;
+        }
+
+        /// <summary>
+        /// Method for finding total of all products in list
+        /// </summary>
+        /// <returns>Sum of product prices and applies any discounts</returns>
         public decimal CartTotal(IEnumerable<Product> products)
         {
-            return products.Sum(p => p.Price);
+            return _discount.Applydiscount(products.Sum(p => p.Price));
         }
     }
 }
