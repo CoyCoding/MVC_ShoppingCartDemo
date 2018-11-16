@@ -9,7 +9,7 @@
 @foreach(var product in Model)
 {
     <div>
-        <h3>@product.Name</h3>
+        <h3>@String.Format(product.Name): @String.Format("{0:C}", product.Price)</h3>
     </div>
 }
 

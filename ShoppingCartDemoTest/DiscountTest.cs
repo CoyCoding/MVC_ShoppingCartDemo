@@ -6,7 +6,7 @@ using ShoppingCartDemo.Models.CartCalculator;
 namespace ShoppingCartDemoTest
 {
     [TestClass]
-    public class UnitTest1
+    public class DiscountTest
     {
         public ICartDiscount GetCartDiscount()
         {
