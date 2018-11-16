@@ -1,12 +1,17 @@
-﻿@model decimal
+﻿@using ShoppingCartDomain.Entities
+@model IEnumerable<Product>
 
 @{
     ViewBag.Title = "Shopping cart display";
 }
 <h2>@ViewBag.Title.</h2>
 
-<h3>Product total can be found with:</h3>
-<p>Total value is $@Model</p>
+@foreach(var product in Model)
+{
+    <div>
+        <h3>@product.Name</h3>
+    </div>
+}
 
 
 

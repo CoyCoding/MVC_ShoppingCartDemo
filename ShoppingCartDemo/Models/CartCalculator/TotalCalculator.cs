@@ -22,7 +22,7 @@ namespace ShoppingCartDemo.Models
         /// Method for finding total of all products in Ienum<Product>
         /// </summary>
         /// <returns>Sum of product prices and applies any discounts</returns>
-        public decimal CartTotal(IEnumerable<Product> products)
+        public decimal CartTotal(IEnumerable<ProductView> products)
         {
             return _discount.Applydiscount(products.Sum(p => p.Price));
         }

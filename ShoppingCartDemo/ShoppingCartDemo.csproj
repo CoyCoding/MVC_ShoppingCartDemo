@@ -239,7 +239,7 @@
     <Compile Include="Models\Identity\IdentityModels.cs" />
     <Compile Include="Models\Identity\ManageViewModels.cs" />
     <Compile Include="Models\CartCalculator\ITotalCalculator.cs" />
-    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductView.cs" />
     <Compile Include="Models\ShoppingCart.cs" />
     <Compile Include="Models\CartCalculator\TotalCalculator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -366,6 +366,12 @@
     <EmbeddedResource Include="Migrations\201811140652143_InitialModel.resx">
       <DependentUpon>201811140652143_InitialModel.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ShoppingCartDomain\ShoppingCartDomain.csproj">
+      <Project>{714d7d9e-7ade-472e-8302-df892a18d38c}</Project>
+      <Name>ShoppingCartDomain</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

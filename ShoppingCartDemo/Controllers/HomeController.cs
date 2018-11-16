@@ -4,25 +4,27 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ShoppingCartDemo.Models;
+using ShoppingCartDomain.Entities;
 
 namespace ShoppingCartDemo.Controllers
 {
     public class HomeController : Controller
     {
-        private ITotalCalculator calculator;
+        //private ITotalCalculator calculator;
+        private IProductRepo _productRepo;
 
-        public HomeController(ITotalCalculator calculatorParam)
+        public HomeController(IProductRepo productRepo)
         {
-            calculator = calculatorParam;
+            _productRepo = productRepo;
         }
 
-        private Product[] tempCart =
-        {
-            new Product{Name ="Ball", Price =  2.50m, Category = "toy"},
-            new Product{Name = "Chips", Price = 2.50m, Category = "food"},
-            new Product{Name = "Game", Price = 20.20m, Category="toy"},
-            new Product{Name = "Game", Price = 20.20m, Category="toy"},
-        };
+        //private Product[] tempCart =
+        //{
+        //    new Product{Name ="Ball", Price =  2.50m, Category = "toy"},
+        //    new Product{Name = "Chips", Price = 2.50m, Category = "food"},
+        //    new Product{Name = "Game", Price = 20.20m, Category="toy"},
+        //    new Product{Name = "Game", Price = 20.20m, Category="toy"},
+        //};
 
         public ActionResult Index()
         {
@@ -31,16 +33,7 @@ namespace ShoppingCartDemo.Controllers
 
         public ActionResult About()
         {
-
-
-            var cart = new ShoppingCart(calculator)
-            {
-                Products = tempCart
-            };
-
-            decimal totalValue = cart.CalculateProductTotal();
-
-            return View(totalValue);
+            return View(_productRepo.Products);
         }
 
         public ActionResult Contact()

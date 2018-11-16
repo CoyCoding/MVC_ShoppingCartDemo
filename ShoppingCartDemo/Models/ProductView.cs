@@ -5,7 +5,7 @@ using System.Web;
 
 namespace ShoppingCartDemo.Models
 {
-    public class Product
+    public class ProductView
     {
         public int id { get; set; }
 
