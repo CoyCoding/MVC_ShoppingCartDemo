@@ -35,10 +35,5 @@ namespace ShoppingCartDemo.DependencyInject
             kernel.Bind<ICartDiscount>().To<CartDiscount>();
         }
 
-        //private static void RegisterServices (IKernel kernel)
-        //{
-        //    System.Web.Mvc.DependencyResolver.SetResolver(new
-        //        ShoppingCartDemo.DependencyInject.NinjectDIResolver(kernel));
-        //}
     }
 }
