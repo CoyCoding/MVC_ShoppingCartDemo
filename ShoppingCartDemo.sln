@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingCartDemo.UnitTest",
 		{714D7D9E-7ADE-472E-8302-DF892A18D38C} = {714D7D9E-7ADE-472E-8302-DF892A18D38C}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingCartDemo.Domain", "ShoppingCartDomain\ShoppingCartDemo.Domain.csproj", "{714D7D9E-7ADE-472E-8302-DF892A18D38C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingCartDomain", "ShoppingCartDomain\ShoppingCartDomain.csproj", "{714D7D9E-7ADE-472E-8302-DF892A18D38C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
