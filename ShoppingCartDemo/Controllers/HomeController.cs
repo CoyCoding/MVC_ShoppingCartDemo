@@ -26,7 +26,6 @@ namespace ShoppingCartDemo.Controllers
             return View();
         }
 
-
         public ViewResult Store(int page = 1)
         {
             var productList = new ProductListViewModel
