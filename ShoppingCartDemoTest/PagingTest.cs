@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using ShoppingCartDemo.Models;
 using ShoppingCartDomain.Entities;
 using ShoppingCartDomain.DbAccess;
+using ShoppingCartDemo.Models.ViewHelpers;
 using ShoppingCartDemo.Controllers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace ShoppingCartDemoTest
     public class PagingTest
     {
         [TestMethod]
-        public void TestMethod1()
+        public void Can_Page()
         {
             //Arrange
             Mock<IProductRepo> mockObj = new Mock<IProductRepo>();
@@ -40,6 +41,31 @@ namespace ShoppingCartDemoTest
             Console.WriteLine(productArr);
             Assert.IsTrue(productArr.Length == 2);
             Assert.AreEqual(productArr[0].Name, "Item 3");
+        }
+
+        [TestMethod]
+        public void Generates_Page_Links()
+        {
+            //Arrange
+            HtmlHelper htmlHelper = null;
+
+            Pagination pagingInfo = new Pagination
+            {
+                CurrentPage = 2,
+                TotalItems = 21,
+                ItemsPerPage = 10
+            };
+
+            Func<int, string> pageUrlDel = num => "Page" + num;
+
+            //Act
+            MvcHtmlString result = htmlHelper.PaginationLinks(pagingInfo, pageUrlDel);
+
+            //Assert
+            Assert.AreEqual(@"<a class=""btn btn-default"" href=""Page1"">1</a>"
+                          + @"<a class=""btn btn-default btn-primary selected"" href=""Page2"">2</a>"
+                          + @"<a class=""btn btn-default"" href=""Page3"">3</a>",
+                          result.ToString());
         }
     }
 }
