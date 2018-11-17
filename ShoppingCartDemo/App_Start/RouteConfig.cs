@@ -16,6 +16,12 @@ namespace ShoppingCartDemo
             routes.MapMvcAttributeRoutes();
 
             routes.MapRoute(
+                name: null,
+                url: "Store/Page{page}",
+                defaults: new {Controller = "Home", Action = "Store"}
+                );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
