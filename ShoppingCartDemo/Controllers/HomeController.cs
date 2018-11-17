@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ShoppingCartDemo.Models;
+using ShoppingCartDemo.Models.HtmlHelpers;
 using ShoppingCartDomain.Entities;
 
 namespace ShoppingCartDemo.Controllers
@@ -27,12 +28,22 @@ namespace ShoppingCartDemo.Controllers
 
         public ViewResult About(int page = 1)
         {
-            var PagedProducts = _productRepo.Products
+            var productList = new ProductListViewModel
+            {
+                Products = _productRepo.Products
                 .OrderBy(p => p.id)
                 .Skip((page - 1) * _PageSize)
-                .Take(_PageSize);
+                .Take(_PageSize),
 
-            return View(PagedProducts);
+                PagingInfo = new Pagination
+                {
+                    CurrentPage = page,
+                    ItemsPerPage = _PageSize,
+                    TotalItems = _productRepo.Products.Count()
+                }
+            };
+
+            return View(productList);
                
         }
 

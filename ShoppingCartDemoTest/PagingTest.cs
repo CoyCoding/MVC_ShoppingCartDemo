@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using ShoppingCartDemo.Models;
 using ShoppingCartDomain.Entities;
 using ShoppingCartDomain.DbAccess;
-using ShoppingCartDemo.Models.ViewHelpers;
+using ShoppingCartDemo.Models.HtmlHelpers;
 using ShoppingCartDemo.Controllers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace ShoppingCartDemo.Models.ViewHelpers
+namespace ShoppingCartDemo.Models.HtmlHelpers
 {
     public class Pagination
     {

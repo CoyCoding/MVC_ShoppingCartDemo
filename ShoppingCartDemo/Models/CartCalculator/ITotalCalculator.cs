@@ -4,6 +4,6 @@ namespace ShoppingCartDemo.Models
 {
     public interface ITotalCalculator
     {
-        decimal CartTotal(IEnumerable<ProductView> products);
+        decimal CartTotal(ProductListViewModel products);
     }
 }

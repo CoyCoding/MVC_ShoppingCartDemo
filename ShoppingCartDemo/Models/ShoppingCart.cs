@@ -10,7 +10,7 @@ namespace ShoppingCartDemo.Models
     {
         private ITotalCalculator _calculator;
 
-        public IEnumerable<ProductView> Products { get; set; }
+        public ProductListViewModel Products { get; set; }
 
         public ShoppingCart(ITotalCalculator calculator)
         {

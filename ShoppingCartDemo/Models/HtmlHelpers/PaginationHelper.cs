@@ -5,7 +5,7 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
-namespace ShoppingCartDemo.Models.ViewHelpers
+namespace ShoppingCartDemo.Models.HtmlHelpers
 {
     public static class PaginationHelper
     {

@@ -1,18 +1,21 @@
-﻿@using ShoppingCartDomain.Entities
-@model IEnumerable<Product>
+﻿@using ShoppingCartDemo.Models.HtmlHelpers
+@model ShoppingCartDemo.Models.ProductListViewModel
 
 @{
     ViewBag.Title = "Shopping cart display";
 }
 <h2>@ViewBag.Title.</h2>
 
-@foreach(var product in Model)
+@foreach(var product in Model.Products)
 {
     <div>
-        <h3>@String.Format(product.Name): @String.Format("{0:C}", product.Price)</h3>
+        <h3>@String.Format( product.Name): @String.Format("{0:C}", product.Price)</h3>
     </div>
 }
 
+<div>
+    @Html.PaginationLinks(Model.PagingInfo, pageNum => Url.Action("About", new { page = pageNum }))
+</div>
 
 
 @section Scripts{
