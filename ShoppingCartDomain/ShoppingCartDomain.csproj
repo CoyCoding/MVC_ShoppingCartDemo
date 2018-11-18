@@ -69,8 +69,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DbAccess\DbConnectionContext.cs" />
-    <Compile Include="DbAccess\DbProductRepo.cs" />
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\IProductRepo.cs" />
     <Compile Include="Entities\Product.cs" />

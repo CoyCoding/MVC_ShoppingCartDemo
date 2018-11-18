@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using ShoppingCartDemo.Models;
 using Moq;
 using ShoppingCartDomain.Entities;
-using ShoppingCartDomain.DbAccess;
+
 using Ninject;
 using ShoppingCartDemo.Models.CartCalculator;
 
@@ -36,7 +36,7 @@ namespace ShoppingCartDemo.DependencyInject
         {
             kernel.Bind<ITotalCalculator>().To<TotalCalculator>();
             kernel.Bind<ICartDiscount>().To<CartDiscount>();
-            kernel.Bind<IProductRepo>().To<DbProductRepo>();
+            //kernel.Bind<IProductRepo>().To<DbProductRepo>();
         }
 
     }
