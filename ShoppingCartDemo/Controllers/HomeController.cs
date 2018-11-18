@@ -11,9 +11,7 @@ namespace ShoppingCartDemo.Controllers
 {
     public class HomeController : Controller
     {
-        //private ITotalCalculator calculator;
-        //private IProductRepo _productRepo;
-        private ApplicationDbContext  _productRepo;
+        private ApplicationDbContext _productRepo;
         private int _PageSize = 4;
 
         public HomeController(int pageSize = 4)

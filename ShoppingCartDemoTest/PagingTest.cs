@@ -23,17 +23,17 @@ namespace ShoppingCartDemoTest
             Mock<IProductRepo> mockObj = new Mock<IProductRepo>();
             mockObj.Setup(m => m.Products).Returns(new Product[]
             {
-                new Product {id = 1, Name = "Item 1"},
-                new Product {id = 2, Name = "Item 2"},
-                new Product {id = 3, Name = "Item 3"},
-                new Product {id = 4, Name = "Item 4"},
-                new Product {id = 5, Name = "Item 5"},
-                new Product {id = 6, Name = "Item 6"}
+                new Product {Id = 1, Name = "Item 1"},
+                new Product {Id = 2, Name = "Item 2"},
+                new Product {Id = 3, Name = "Item 3"},
+                new Product {Id = 4, Name = "Item 4"},
+                new Product {Id = 5, Name = "Item 5"},
+                new Product {Id = 6, Name = "Item 6"}
             });
 
-            HomeController controller = new HomeController(mockObj.Object, 2);
+            HomeController controller = new HomeController(2);
             //Act
-            IEnumerable<Product> result = (IEnumerable<Product>)controller.About(2).Model;
+            IEnumerable<Product> result = (IEnumerable<Product>)controller.Store(2).Model;
             
             //Assert
             
