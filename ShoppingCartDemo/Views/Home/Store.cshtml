@@ -18,9 +18,7 @@
             {
                 <div class="card p-4  ml-2 mb-4 product-card-bg">
                     <span class="product-discript">This is some text</span>
-
                 </div>
-
             }
         </div>
 
@@ -30,7 +28,7 @@
                 @Html.Partial("_ProductStorePartial", product)
             }
             <div class="btn-group-sm float-right p-2 m-3">
-                @Html.PaginationLinks(Model.PagingInfo, pageNum => Url.Action("Store", new { page = pageNum }))
+                @Html.PaginationLinks(Model.PagingInfo, pageNum => Url.Action("Store", new { page = pageNum, category = Model.CurrentCategory }))
             </div>
         </div>
        

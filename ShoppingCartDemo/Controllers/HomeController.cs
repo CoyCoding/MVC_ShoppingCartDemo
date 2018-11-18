@@ -9,6 +9,7 @@ using ShoppingCartDomain.Entities;
 
 namespace ShoppingCartDemo.Controllers
 {
+    [RoutePrefix("Home")]
     public class HomeController : Controller
     {
         private ApplicationDbContext _productRepo;
@@ -25,12 +26,20 @@ namespace ShoppingCartDemo.Controllers
             return View();
         }
 
-        public ViewResult Store(int page = 1)
+
+        public ViewResult Store(string category, int page = 1)
         {
-           
+            var currentCategory = _productRepo.Categories.SingleOrDefault(c => c.Name == category)?.Name;
+
+            if (category != null && currentCategory == null)
+            {
+                return View("Index");
+            }
+
             var productList = new ProductListViewModel
             {
                 Products = _productRepo.Products
+                .Where(p => category == null || p.CategoryId == _productRepo.Categories.FirstOrDefault(c => c.Name == category).Id)
                 .OrderBy(p => p.Id)
                 .Skip((page - 1) * _PageSize)
                 .Take(_PageSize),
@@ -40,7 +49,9 @@ namespace ShoppingCartDemo.Controllers
                     CurrentPage = page,
                     ItemsPerPage = _PageSize,
                     TotalItems = _productRepo.Products.Count()
-                }
+                },
+
+                CurrentCategory = currentCategory 
             };
 
             return View(productList);

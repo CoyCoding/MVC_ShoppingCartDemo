@@ -15,10 +15,54 @@ namespace ShoppingCartDemo
 
             routes.MapMvcAttributeRoutes();
 
+            //routes.MapRoute(null,
+            //   "", new
+            //   {
+            //       controller = "Home",
+            //       action = "Store",
+            //       category = (string)null,
+            //       page = 1
+            //   }
+            //    );
+
+            //routes.MapRoute(null,
+            //   "Page{page}", new
+            //   {
+            //       controller = "Home",
+            //       action = "Store",
+            //       category = (string)null,
+            //   },
+            //   new { page = @"\d+" }
+            //    );
+
+            //routes.MapRoute(null,
+            //   "{category}", new
+            //   {
+            //       controller = "Home",
+            //       action = "Store",
+            //       page = 1
+            //   }
+            //    );
+
+            //routes.MapRoute(null,
+            //   "{category}/Page{page}", new
+            //   {
+            //       controller = "Home",
+            //       action = "Store",
+            //   },
+            //   new { page = @"\d+" }
+            //    );
+
             routes.MapRoute(
                 name: null,
                 url: "Store/Page{page}",
-                defaults: new {Controller = "Home", Action = "Store"}
+                defaults: new { Controller = "Home", Action = "Store" }
+                );
+
+            routes.MapRoute(
+                name: null,
+                url: "Store/{category}/Page{page}",
+                defaults: new { Controller = "Home", Action = "Store" }
                 );
 
             routes.MapRoute(
@@ -26,6 +70,8 @@ namespace ShoppingCartDemo
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            
         }
     }
 }
