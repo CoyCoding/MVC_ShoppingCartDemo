@@ -1,7 +1,7 @@
 ﻿@model ShoppingCartDemo.Models.ViewModel.CategoryViewModel
 
 @Html.ActionLink("All","Store", "Home", null,
-    new { @class = "btn btn-block btn-default btn-outline-info" +
+    new { @class = "btn btn-block btn-default btn-outline-info product" +
     (Model.CurrentCategory == null ? " active btn-lg" : "")})
 
 @foreach(var link in Model.Categories)
@@ -12,7 +12,7 @@
     action="Store",
     category = link,
     page =1
-}, new { @class = "btn btn-block btn-outline-info" + 
+}, new { @class = "btn btn-block btn-outline-info product" + 
     (link == Model.CurrentCategory ? " active btn-lg" : "")})
 }
 

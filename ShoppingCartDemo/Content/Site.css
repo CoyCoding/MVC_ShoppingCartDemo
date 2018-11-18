@@ -49,7 +49,7 @@ body {
 }
 
 @media screen and (max-width: 600px) {
-    .product, .product-discript {
+    .product, .product-discript a{
         font-size: 4vw;
     }
 

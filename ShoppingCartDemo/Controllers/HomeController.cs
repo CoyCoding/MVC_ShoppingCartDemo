@@ -29,7 +29,8 @@ namespace ShoppingCartDemo.Controllers
 
         public ViewResult Store(string category, int page = 1)
         {
-            var currentCategory = _productRepo.Categories.SingleOrDefault(c => c.Name == category)?.Name;
+            
+            var currentCategory = _productRepo.Categories.SingleOrDefault(c => c.Name == category);
 
             if (category != null && currentCategory == null)
             {
@@ -48,10 +49,12 @@ namespace ShoppingCartDemo.Controllers
                 {
                     CurrentPage = page,
                     ItemsPerPage = _PageSize,
-                    TotalItems = _productRepo.Products.Count()
+                    TotalItems = category == null ?
+                    _productRepo.Products.Count() :
+                    _productRepo.Products.Where(p => p.CategoryId == currentCategory.Id).Count()
                 },
 
-                CurrentCategory = currentCategory 
+                CurrentCategory = currentCategory?.Name 
             };
 
             return View(productList);
