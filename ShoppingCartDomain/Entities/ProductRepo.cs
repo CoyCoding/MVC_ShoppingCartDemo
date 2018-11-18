@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace ShoppingCartDomain.Entities
 {
-    public interface IProductRepo
+    public class ProductRepo : IProductRepo
     {
-        IEnumerable<Product> Products { get; }
+       public IEnumerable<Product> Products { get; set; }
 
-        IEnumerable<Category> Categories { get;  }
+       public IEnumerable<Category> Categories { get; set; }
     }
 }

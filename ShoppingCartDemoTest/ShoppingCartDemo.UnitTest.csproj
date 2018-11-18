@@ -105,6 +105,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\Ninject.Web.Common.cs" />
+    <Compile Include="DBtest.cs" />
     <Compile Include="DependencyInject\NinjectDIResolver.cs" />
     <Compile Include="DiscountTest.cs" />
     <Compile Include="PagingTest.cs" />
