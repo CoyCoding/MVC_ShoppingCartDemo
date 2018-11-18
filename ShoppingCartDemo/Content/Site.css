@@ -34,6 +34,19 @@ body {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: 200;
 }
+
+@media screen and (min-width: 601px) {
+    .product {
+        font-size: 2vw;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .product, .product-discript {
+        font-size: 4vw;
+    }
+
+}
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;

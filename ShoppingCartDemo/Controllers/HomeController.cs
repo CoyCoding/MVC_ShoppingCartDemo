@@ -12,12 +12,13 @@ namespace ShoppingCartDemo.Controllers
     public class HomeController : Controller
     {
         //private ITotalCalculator calculator;
-        private IProductRepo _productRepo;
+        //private IProductRepo _productRepo;
+        private ApplicationDbContext  _productRepo;
         private int _PageSize = 4;
 
         public HomeController(IProductRepo productRepo, int pageSize = 4)
         {
-            _productRepo = productRepo;
+            _productRepo = new ApplicationDbContext();
             _PageSize = pageSize;
         }
 
@@ -28,10 +29,11 @@ namespace ShoppingCartDemo.Controllers
 
         public ViewResult Store(int page = 1)
         {
+           
             var productList = new ProductListViewModel
             {
                 Products = _productRepo.Products
-                .OrderBy(p => p.id)
+                .OrderBy(p => p.Id)
                 .Skip((page - 1) * _PageSize)
                 .Take(_PageSize),
 

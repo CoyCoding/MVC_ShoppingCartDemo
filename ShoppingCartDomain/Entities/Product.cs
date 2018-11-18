@@ -8,7 +8,7 @@ namespace ShoppingCartDomain.Entities
 {
         public class Product
         {
-            public int id { get; set; }
+            public int Id { get; set; }
 
             public string Name { get; set; }
 
@@ -18,7 +18,7 @@ namespace ShoppingCartDomain.Entities
 
             public int Quantity { get; set; }
 
-            public string Category { get; set; }
+            public int CategoryId { get; set; }
 
             public string Seller { get; set; }
         }

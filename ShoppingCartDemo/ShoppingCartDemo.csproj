@@ -222,6 +222,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811181155467_Init.cs" />
+    <Compile Include="Migrations\201811181155467_Init.Designer.cs">
+      <DependentUpon>201811181155467_Init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811181211128_ChangeID.cs" />
+    <Compile Include="Migrations\201811181211128_ChangeID.Designer.cs">
+      <DependentUpon>201811181211128_ChangeID.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CartCalculator\CartDiscount.cs" />
     <Compile Include="Models\CartCalculator\ICartDiscount.cs" />
     <Compile Include="Models\Identity\AccountViewModels.cs" />
@@ -359,6 +368,14 @@
       <Project>{714d7d9e-7ade-472e-8302-df892a18d38c}</Project>
       <Name>ShoppingCartDomain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201811181155467_Init.resx">
+      <DependentUpon>201811181155467_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811181211128_ChangeID.resx">
+      <DependentUpon>201811181211128_ChangeID.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

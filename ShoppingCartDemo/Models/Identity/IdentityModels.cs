@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using ShoppingCartDomain.Entities;
 
 namespace ShoppingCartDemo.Models
 {
@@ -20,6 +21,8 @@ namespace ShoppingCartDemo.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<Product> Products {get; set;}
+        public DbSet<Category>  Categories { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

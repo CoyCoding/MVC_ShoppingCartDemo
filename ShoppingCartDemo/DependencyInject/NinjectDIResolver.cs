@@ -36,7 +36,6 @@ namespace ShoppingCartDemo.DependencyInject
         {
             kernel.Bind<ITotalCalculator>().To<TotalCalculator>();
             kernel.Bind<ICartDiscount>().To<CartDiscount>();
-
             kernel.Bind<IProductRepo>().To<DbProductRepo>();
         }
 
