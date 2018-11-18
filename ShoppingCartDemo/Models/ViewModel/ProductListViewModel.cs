@@ -7,7 +7,7 @@ using System.Web;
 
 namespace ShoppingCartDemo.Models
 {
-    public class ProductListViewModel
+    public class ProductListViewModel 
     {
 
         public IEnumerable<Product> Products { get; set; }

@@ -1,9 +1,10 @@
-﻿@model IEnumerable<string>
+﻿@model ShoppingCartDemo.Models.ViewModel.CategoryViewModel
 
 @Html.ActionLink("All","Store", "Home", null,
-    new { @class = "btn btn-block btn-default btn-outline-info btn-lg" })
+    new { @class = "btn btn-block btn-default btn-outline-info" +
+    (Model.CurrentCategory == null ? " active btn-lg" : "")})
 
-@foreach(var link in Model)
+@foreach(var link in Model.Categories)
 {
     @Html.RouteLink(link, new
 {
@@ -11,7 +12,8 @@
     action="Store",
     category = link,
     page =1
-}, new { @class = "btn btn-block btn-outline-info btn-lg" })
+}, new { @class = "btn btn-block btn-outline-info" + 
+    (link == Model.CurrentCategory ? " active btn-lg" : "")})
 }
 
 <div class="btn-o"></div>

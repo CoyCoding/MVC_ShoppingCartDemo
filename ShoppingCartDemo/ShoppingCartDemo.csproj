@@ -238,7 +238,9 @@
     <Compile Include="Models\Identity\IdentityModels.cs" />
     <Compile Include="Models\Identity\ManageViewModels.cs" />
     <Compile Include="Models\CartCalculator\ITotalCalculator.cs" />
-    <Compile Include="Models\ProductListViewModel.cs" />
+    <Compile Include="Models\ViewModel\CategoryViewModel.cs" />
+    <Compile Include="Models\ViewModel\ICategoryViewModel.cs" />
+    <Compile Include="Models\ViewModel\ProductListViewModel.cs" />
     <Compile Include="Models\ShoppingCart.cs" />
     <Compile Include="Models\CartCalculator\TotalCalculator.cs" />
     <Compile Include="Models\HtmlHelpers\Pagination.cs" />
