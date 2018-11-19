@@ -1,10 +1,10 @@
 ﻿@model ShoppingCartDomain.Entities.Product
 
-<div class="card p-4  ml-2 mb-4 product-card-bg">
-    <h3 class="product">
-        <b class="">@String.Format(Model.Name):</b>
-        <span class="badge badge-info float-right price-shadow">@String.Format("{0:C}", Model.Price)</span>
-    </h3>
-    <span class="product-discript">@Model.Description</span>
+    <div class="card product-card-bg col-lg-4 col-12">
+        <h3 class="product">
+            <b class="">@String.Format(Model.Name):</b>
+            <span class="badge badge-info float-right price-shadow">@String.Format("{0:C}", Model.Price)</span>
+        </h3>
+        <span class="product-discript">@Model.Description</span>
+    </div>
 
-</div>
