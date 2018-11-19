@@ -110,6 +110,7 @@
     <Compile Include="DiscountTest.cs" />
     <Compile Include="PagingTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CartTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

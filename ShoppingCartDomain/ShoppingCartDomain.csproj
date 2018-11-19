@@ -69,6 +69,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Cart.cs" />
+    <Compile Include="Entities\CartItem.cs" />
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\IProductRepo.cs" />
     <Compile Include="Entities\Product.cs" />
