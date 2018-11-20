@@ -26,7 +26,7 @@ namespace ShoppingCartDemoTest
             //Act
             cart.RemoveSingleItem(p1);
             Assert.AreEqual(cart.CartValueTotal(), 0);
-            
+            Assert.AreEqual(cart.GetCartItems.Any(), false);
             
 
         }
