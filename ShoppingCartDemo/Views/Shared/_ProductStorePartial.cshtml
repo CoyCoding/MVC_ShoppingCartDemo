@@ -1,10 +1,19 @@
 ﻿@model ShoppingCartDomain.Entities.Product
 
-    <div class="product-card-bg col-lg-4 col-12">
-        <h3 class="product">
+    <div class="col-12 col-md-4 product-grid pb-1">
+        <div class="product-card-bg col-12 border-info border">
             <b class="">@String.Format(Model.Name):</b>
-            <span class="badge badge-info float-right price-shadow">@String.Format("{0:C}", Model.Price)</span>
-        </h3>
-        <span class="product-discript">@Model.Description</span>
+
+            @using (Html.BeginForm("AddToCart", "Cart"))
+             {
+                <div>
+                @Html.HiddenFor(p => p.Id)
+                @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                <input type="submit" class="btn-sm btn-success" value="Add to cart" />
+                <span class="@*badge badge-info float-right price-shadow*@">@String.Format("{0:C}", Model.Price)</span>
+             </div>
+             }
+             <span class="product-discript">@Model.Description</span>
+        </div>
     </div>
 

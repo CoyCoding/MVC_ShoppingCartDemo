@@ -45,7 +45,20 @@ namespace ShoppingCartDemoTest
             Assert.AreEqual(list.Length, 2);
             Assert.AreEqual(list[0].Quantity, 11);
             Assert.AreEqual(list[1].Quantity, 1);
+        }
 
+        public void Calculate_Cart_Total()
+        {
+            Product p1 = new Product { Id = 1, Name = "P1", Price = 100m};
+            Product p2 = new Product { Id = 2, Name = "P2", Price = 100m };
+
+            Cart cart = new Cart();
+
+            cart.AddItem(p1, 1);
+            cart.AddItem(p2, 1);
+            cart.AddItem(p1, 2);
+
+            Assert.AreEqual(cart.CartValueTotal(), 400m);
 
         }
     }
