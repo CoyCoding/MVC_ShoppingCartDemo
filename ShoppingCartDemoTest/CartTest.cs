@@ -27,7 +27,25 @@ namespace ShoppingCartDemoTest
             cart.RemoveSingleItem(p1);
             Assert.AreEqual(cart.CartValueTotal(), 0);
             Assert.AreEqual(cart.GetCartItems.Any(), false);
-            
+        }
+
+        public void Does_Increase_Quantity()
+        {
+            //Arrange
+            Product p1 = new Product { Id = 1, Name = "P1" };
+            Product p2 = new Product { Id = 2, Name = "P2" };
+
+            Cart cart = new Cart();
+
+            cart.AddItem(p1, 1);
+            cart.AddItem(p2, 1);
+            cart.AddItem(p1, 10);
+            CartItem[] list = cart.GetCartItems.OrderBy(c => c.Product.Id).ToArray();
+
+            Assert.AreEqual(list.Length, 2);
+            Assert.AreEqual(list[0].Quantity, 11);
+            Assert.AreEqual(list[1].Quantity, 1);
+
 
         }
     }
