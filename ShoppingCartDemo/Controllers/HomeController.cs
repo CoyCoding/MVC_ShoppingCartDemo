@@ -9,7 +9,7 @@ using ShoppingCartDomain.Entities;
 
 namespace ShoppingCartDemo.Controllers
 {
-    [RoutePrefix("Home")]
+
     public class HomeController : Controller
     {
         private ApplicationDbContext _productRepo;
@@ -19,6 +19,11 @@ namespace ShoppingCartDemo.Controllers
         {
             _productRepo = new ApplicationDbContext();
             _PageSize = pageSize;
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _productRepo.Dispose();
         }
 
         public ActionResult Index()

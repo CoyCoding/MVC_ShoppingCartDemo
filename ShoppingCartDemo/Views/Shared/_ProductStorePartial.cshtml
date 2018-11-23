@@ -10,7 +10,7 @@
                 @Html.HiddenFor(p => p.Id)
                 @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
                 <input type="submit" class="btn-sm btn-success" value="Add to cart" />
-                <span class="@*badge badge-info float-right price-shadow*@">@String.Format("{0:C}", Model.Price)</span>
+                @*<span class="badge badge-info float-right price-shadow">@String.Format("{0:C}", Model.Price)</span>*@
              </div>
              }
              <span class="product-discript">@Model.Description</span>
