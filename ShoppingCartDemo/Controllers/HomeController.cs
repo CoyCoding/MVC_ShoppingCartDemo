@@ -12,18 +12,13 @@ namespace ShoppingCartDemo.Controllers
 
     public class HomeController : Controller
     {
-        private ApplicationDbContext _productRepo;
+        private IApplicationDbContext _productRepo;
         private int _PageSize;
 
-        public HomeController(int pageSize = 12)
+        public HomeController(IApplicationDbContext productRepo, int pageSize = 12)
         {
-            _productRepo = new ApplicationDbContext();
+            _productRepo = productRepo;
             _PageSize = pageSize;
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            _productRepo.Dispose();
         }
 
         public ActionResult Index()

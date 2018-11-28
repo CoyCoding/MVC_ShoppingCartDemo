@@ -1,0 +1,4 @@
+﻿@model ShoppingCartDomain.Entities.Cart
+
+<li class="nav-item">@Html.ActionLink("Cart : " + Model.GetCartItems.Sum(x => x.Quantity), "Index", "Cart", 
+                    routeValues: null, htmlAttributes: new { @class = "nav-link" })</li>

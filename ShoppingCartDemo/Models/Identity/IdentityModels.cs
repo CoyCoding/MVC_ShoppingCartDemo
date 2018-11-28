@@ -18,8 +18,15 @@ namespace ShoppingCartDemo.Models
             return userIdentity;
         }
     }
+    public interface IApplicationDbContext
+    {
+        DbSet<Product> Products { get; set; }
+        DbSet<Category> Categories { get; set; }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+        int SaveChanges();
+    }
+
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IApplicationDbContext
     {
         public DbSet<Product> Products {get; set;}
         public DbSet<Category>  Categories { get; set; }

@@ -11,13 +11,13 @@ namespace ShoppingCartDemo.Controllers
 {
     public class CategoryController : Controller
     {
-        private ApplicationDbContext _productRepo;
+        private IApplicationDbContext _productRepo;
         private ICategoryViewModel _categories;
-        // GET: Category
 
-        public CategoryController()
+        // GET: Category
+        public CategoryController(IApplicationDbContext productRepo)
         {    
-            _productRepo = new ApplicationDbContext();
+            _productRepo = productRepo;
             _categories = new CategoryViewModel
             {
                 Categories = _productRepo.Categories
@@ -25,11 +25,6 @@ namespace ShoppingCartDemo.Controllers
                 .Distinct()
                 .OrderBy(x => x)
             };
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            _productRepo.Dispose();
         }
 
         public PartialViewResult Menu(string category = null)

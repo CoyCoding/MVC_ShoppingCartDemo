@@ -12,18 +12,13 @@ namespace ShoppingCartDemo.Controllers
 {
     public class CartController : Controller
     {
-        private ApplicationDbContext _productRepo;
+        private IApplicationDbContext _productRepo;
+        
         // GET: Cart
-        public CartController()
+        public CartController(IApplicationDbContext productRepo)
         {
-            _productRepo = new ApplicationDbContext();
+            _productRepo = productRepo;
         }
-
-        protected override void Dispose(bool disposing)
-        {
-            _productRepo.Dispose();
-        }
-
 
         public ViewResult Index(Cart cart, string returnUrl)
         {
@@ -64,6 +59,11 @@ namespace ShoppingCartDemo.Controllers
         private Product GetProductToAdd(int productId)
         {
             return _productRepo.Products.FirstOrDefault(p => p.Id == productId);
+        }
+
+        public PartialViewResult Summary(Cart cart)
+        {
+            return PartialView(cart);
         }
     }
 }

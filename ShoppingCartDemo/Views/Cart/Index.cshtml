@@ -13,6 +13,7 @@
             <th>Item</th>
             <th class="text-right">Price</th>
             <th class="text-right">Subtotal</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -23,6 +24,15 @@
                 <td class="text-left">@item.Product.Name</td>
                 <td class="text-right">$@item.Product.Price</td>
                 <td class="text-right">$@(item.Quantity * item.Product.Price)</td>
+                <td class="text-center">
+                    @using (Html.BeginForm("RemoveFromCart", "Cart"))
+                    {
+                        @Html.Hidden("Id", item.Product.Id)
+                        @Html.HiddenFor(x => x.ReturnUrl)
+                        <input class="btn btn-sm btn-warning"
+                               type="submit" value="Remove"/>
+                    }
+                </td>
             </tr>
         }
     </tbody>
