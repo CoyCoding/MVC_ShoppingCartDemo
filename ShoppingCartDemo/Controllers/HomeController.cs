@@ -15,7 +15,7 @@ namespace ShoppingCartDemo.Controllers
         private ApplicationDbContext _productRepo;
         private int _PageSize;
 
-        public HomeController(int pageSize = 10)
+        public HomeController(int pageSize = 12)
         {
             _productRepo = new ApplicationDbContext();
             _PageSize = pageSize;

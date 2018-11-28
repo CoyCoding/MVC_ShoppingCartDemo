@@ -1,7 +1,7 @@
 ﻿@model ShoppingCartDomain.Entities.Product
 
     <div class="col-12 col-md-4 product-grid pb-1">
-        <div class="product-card-bg col-12 border-info border">
+        <div class="product-card-bg col-12 border-info border rounded">
             <b class="">@String.Format(Model.Name):</b>
 
             @using (Html.BeginForm("AddToCart", "Cart"))

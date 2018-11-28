@@ -4,16 +4,17 @@
     new { @class = "btn btn-block btn-default btn-outline-info product" +
     (Model.CurrentCategory == null ? " active btn-lg" : "")})
 
-@foreach(var link in Model.Categories)
+@foreach(var category in Model.Categories)
 {
-    @Html.RouteLink(link, new
-{
+    @Html.RouteLink(category, new
+    {
     controller = "Home",
     action="Store",
-    category = link,
-    page =1
-    }, new { @class = "btn btn-block btn-outline-info product" + 
-    (link == Model.CurrentCategory ? " active btn-lg" : "")})
-}
+    category = category,
+    page = 1
+    }, 
 
-<div class="btn-o"></div>
+    new { @class = "btn btn-block btn-outline-info product" + 
+    (category == Model.CurrentCategory ? " active btn-lg" : "")})
+ }
+

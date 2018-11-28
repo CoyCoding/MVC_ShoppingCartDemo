@@ -15,43 +15,43 @@ namespace ShoppingCartDemo
 
             routes.MapMvcAttributeRoutes();
 
-            //routes.MapRoute(null,
-            //   "", new
-            //   {
-            //       controller = "Home",
-            //       action = "Store",
-            //       category = (string)null,
-            //       page = 1
-            //   }
-            //    );
+            routes.MapRoute(null,
+               "Store", new
+               {
+                   controller = "Home",
+                   action = "Store",
+                   category = (string)null,
+                   page = 1
+               }
+                );
 
-            //routes.MapRoute(null,
-            //   "Page{page}", new
-            //   {
-            //       controller = "Home",
-            //       action = "Store",
-            //       category = (string)null,
-            //   },
-            //   new { page = @"\d+" }
-            //    );
+            routes.MapRoute(null,
+               "Store/Page{page}", new
+               {
+                   controller = "Home",
+                   action = "Store",
+                   category = (string)null,
+               },
+               new { page = @"\d+" }
+                );
 
-            //routes.MapRoute(null,
-            //   "{category}", new
-            //   {
-            //       controller = "Home",
-            //       action = "Store",
-            //       page = 1
-            //   }
-            //    );
+            routes.MapRoute(null,
+               "Store/{category}", new
+               {
+                   controller = "Home",
+                   action = "Store",
+                   page = 1
+               }
+                );
 
-            //routes.MapRoute(null,
-            //   "{category}/Page{page}", new
-            //   {
-            //       controller = "Home",
-            //       action = "Store",
-            //   },
-            //   new { page = @"\d+" }
-            //    );
+            routes.MapRoute(null,
+               "Store/{category}/Page{page}", new
+               {
+                   controller = "Home",
+                   action = "Store",
+               },
+               new { page = @"\d+" }
+                );
 
             routes.MapRoute(
                 name: null,

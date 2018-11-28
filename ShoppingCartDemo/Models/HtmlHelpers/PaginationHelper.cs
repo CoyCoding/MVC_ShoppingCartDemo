@@ -20,11 +20,11 @@ namespace ShoppingCartDemo.Models.HtmlHelpers
                 htmlTag.InnerHtml = i.ToString();
                 if(i == pageInfo.CurrentPage)
                 {
-                    htmlTag.AddCssClass("btn-primary btn btn-default active");
+                    htmlTag.AddCssClass("btn-info btn btn-default active");
                 }
                 else 
 {
-                    htmlTag.AddCssClass("btn btn-default btn-outline-primary");
+                    htmlTag.AddCssClass("btn btn-default btn-outline-info");
                 }
                 
                 result.Append(htmlTag.ToString());

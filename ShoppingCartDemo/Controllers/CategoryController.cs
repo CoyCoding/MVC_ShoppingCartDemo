@@ -31,6 +31,7 @@ namespace ShoppingCartDemo.Controllers
         {
             _productRepo.Dispose();
         }
+
         public PartialViewResult Menu(string category = null)
         {
             _categories.CurrentCategory = category;        

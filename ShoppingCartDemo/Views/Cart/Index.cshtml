@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@ViewBag.Title</h2>
+<h2 class="text-center">@ViewBag.Title</h2>
 <table class="table">
     <thead>
         <tr>
@@ -21,8 +21,8 @@
             <tr>
                 <td class="text-center">@item.Quantity</td>
                 <td class="text-left">@item.Product.Name</td>
-                <td class="text-right">@item.Product.Price.ToString("c")</td>
-                <td class="text-right">@(item.Quantity * item.Product.Price).ToString("c")</td>
+                <td class="text-right">$@item.Product.Price</td>
+                <td class="text-right">$@(item.Quantity * item.Product.Price)</td>
             </tr>
         }
     </tbody>
@@ -35,5 +35,5 @@
 </table>
 
 <div class="text-center">
-    <a class="btn btn-primary" href="@Model.ReturnUrl">Continue Shopping</a>
+    <a class="btn btn-primary text-white" href="@Model.ReturnUrl">Continue Shopping</a>
 </div>
