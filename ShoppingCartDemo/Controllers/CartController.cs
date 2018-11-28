@@ -25,51 +25,40 @@ namespace ShoppingCartDemo.Controllers
         }
 
 
-        public ViewResult Index(string returnUrl)
+        public ViewResult Index(Cart cart, string returnUrl)
         {
             return View(new CartIndexViewModel
             {
-                Cart = GetCart(),
+                Cart = cart,
                 ReturnUrl = returnUrl
             });
         }
 
         [HttpPost]
-        public RedirectToRouteResult AddToCart(int Id, string returnUrl)
+        public RedirectToRouteResult AddToCart(Cart cart, int Id, string returnUrl)
         {
             Product product = GetProductToAdd(Id);
 
             if (product != null)
             {
-                GetCart().AddItem(product, 1);
+                cart.AddItem(product, 1);
             }
 
             return RedirectToAction("Index", new { returnUrl} );
         }
 
         [HttpPost]
-        public RedirectToRouteResult RemoveFromCart(int Id, string returnUrl)
+        public RedirectToRouteResult RemoveFromCart(Cart cart, int Id, string returnUrl)
         {
             Product product = GetProductToAdd(Id);
 
             if(product != null)
             {
-                GetCart().RemoveSingleItem(product);
+                cart.RemoveSingleItem(product);
             }
 
             return RedirectToAction("Index", new { returnUrl });
 
-        }
-
-        private Cart GetCart()
-        {
-            Cart cart = (Cart)Session["Cart"];
-            if(cart == null)
-            {
-                cart = new Cart();
-                Session["Cart"] = cart;
-            }
-            return cart;
         }
 
         private Product GetProductToAdd(int productId)

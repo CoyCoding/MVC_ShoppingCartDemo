@@ -233,6 +233,7 @@
       <DependentUpon>201811181211128_ChangeID.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Binder\CartBinder.cs" />
     <Compile Include="Models\CartCalculator\CartDiscount.cs" />
     <Compile Include="Models\CartCalculator\ICartDiscount.cs" />
     <Compile Include="Models\Identity\AccountViewModels.cs" />
