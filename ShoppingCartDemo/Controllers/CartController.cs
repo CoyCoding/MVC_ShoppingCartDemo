@@ -56,6 +56,14 @@ namespace ShoppingCartDemo.Controllers
 
         }
 
+        [HttpPost]
+        public RedirectToRouteResult RemoveAllFromCart(Cart cart, string returnUrl)
+        {
+            cart.Clear();
+
+            return RedirectToAction("Index", new { returnUrl });
+        }
+
         private Product GetProductToAdd(int productId)
         {
             return _productRepo.Products.FirstOrDefault(p => p.Id == productId);

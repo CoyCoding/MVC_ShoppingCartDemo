@@ -26,12 +26,12 @@
                 <td class="text-right">$@(item.Quantity * item.Product.Price)</td>
                 <td class="text-center">
                     @using (Html.BeginForm("RemoveFromCart", "Cart"))
-                    {
+                     {
                         @Html.Hidden("Id", item.Product.Id)
                         @Html.HiddenFor(x => x.ReturnUrl)
                         <input class="btn btn-sm btn-warning"
                                type="submit" value="Remove"/>
-                    }
+                     }
                 </td>
             </tr>
         }
@@ -40,6 +40,14 @@
         <tr>
             <td colspan="3" class="text-right">Total:</td>
             <td class="text-right">@Model.Cart.CartValueTotal().ToString("c")</td>
+            <td class="text-center">
+                @using (Html.BeginForm("RemoveAllFromCart", "Cart"))
+                {
+                    @Html.HiddenFor(x => x.ReturnUrl)
+                    <input class="btn btn-sm btn-warning"
+                           type="submit" value="Remove All" />
+                }
+            </td>
         </tr>
     </tfoot>
 </table>
