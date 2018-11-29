@@ -64,6 +64,11 @@ namespace ShoppingCartDemo.Controllers
             return RedirectToAction("Index", new { returnUrl });
         }
 
+        public ViewResult Checkout()
+        {
+            return View(new ShippingDetails());
+        }
+
         private Product GetProductToAdd(int productId)
         {
             return _productRepo.Products.FirstOrDefault(p => p.Id == productId);
