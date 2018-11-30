@@ -10,7 +10,7 @@ namespace ShoppingCartDomain.Entities
     {
         public string MailToAddress { get; set; }
         public string MailFromAddress { get; set; }
-        public bool UseSsl = true;
+        public bool UseSsl = false;
         public string Username { get; set; }
         public string Password { get; set; }
         public string SeverName { get; set; }

@@ -70,7 +70,7 @@ namespace ShoppingCartDomain.Entities
                 {
                     mailMessage.BodyEncoding = Encoding.ASCII;
                 }
-
+                
                 smtpClient.Send(mailMessage);
             }
         }

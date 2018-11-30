@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ShoppingCartDemo.Models;
+using ShoppingCartDomain.Abstract;
 using ShoppingCartDemo.Models.HtmlHelpers;
 using ShoppingCartDemo.Models.ViewModel;
 using ShoppingCartDomain.Entities;
@@ -13,11 +14,13 @@ namespace ShoppingCartDemo.Controllers
     public class CartController : Controller
     {
         private IApplicationDbContext _productRepo;
+        private IOrderProcessor _orderProcessor;
         
         // GET: Cart
-        public CartController(IApplicationDbContext productRepo)
+        public CartController(IApplicationDbContext productRepo, IOrderProcessor orderProcessor)
         {
             _productRepo = productRepo;
+            _orderProcessor = orderProcessor;
         }
 
         public ViewResult Index(Cart cart, string returnUrl)
@@ -64,9 +67,24 @@ namespace ShoppingCartDemo.Controllers
             return RedirectToAction("Index", new { returnUrl });
         }
 
-        public ViewResult Checkout()
+        [HttpPost]
+        public ViewResult Checkout(Cart cart, ShippingDetails shippingDetails)
         {
-            return View(new ShippingDetails());
+            if(cart.GetCartItems.Count() == 0)
+            {
+                ModelState.AddModelError("", "Your cart is empty.");
+            }
+
+            if (ModelState.IsValid)
+            {
+                _orderProcessor.ProcessOrder(cart, shippingDetails);
+                cart.Clear();
+                return View("Complete");
+            }
+            else
+            {
+                return View(shippingDetails);
+            }
         }
 
         private Product GetProductToAdd(int productId)
