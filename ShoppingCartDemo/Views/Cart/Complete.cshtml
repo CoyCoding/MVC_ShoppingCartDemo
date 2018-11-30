@@ -1,0 +1,15 @@
+﻿@model ShoppingCartDemo.Models.ViewModel.CartIndexViewModel
+
+@{
+    ViewBag.Title = "Complete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Thank you for ordering!</h2>
+<p>Your order for &lt;insert items&gt;</p>
+<ul>
+    @foreach (var item in Model.GetCartItems)
+    {
+        <li>@item.Product.Name - @item.Quantity</li>
+    }
+</ul>

@@ -236,6 +236,7 @@
     <Compile Include="Models\Binder\CartBinder.cs" />
     <Compile Include="Models\CartCalculator\CartDiscount.cs" />
     <Compile Include="Models\CartCalculator\ICartDiscount.cs" />
+    <Compile Include="Models\Helpers\ViewModelHelpers\CartToViewModel.cs" />
     <Compile Include="Models\Identity\AccountViewModels.cs" />
     <Compile Include="Models\Identity\IdentityModels.cs" />
     <Compile Include="Models\Identity\ManageViewModels.cs" />
@@ -244,10 +245,9 @@
     <Compile Include="Models\ViewModel\CategoryViewModel.cs" />
     <Compile Include="Models\ViewModel\ICategoryViewModel.cs" />
     <Compile Include="Models\ViewModel\ProductListViewModel.cs" />
-    <Compile Include="Models\ShoppingCart.cs" />
     <Compile Include="Models\CartCalculator\TotalCalculator.cs" />
-    <Compile Include="Models\HtmlHelpers\Pagination.cs" />
-    <Compile Include="Models\HtmlHelpers\PaginationHelper.cs" />
+    <Compile Include="Models\Helpers\HtmlHelpers\Pagination.cs" />
+    <Compile Include="Models\Helpers\HtmlHelpers\PaginationHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -356,6 +356,7 @@
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Cart\Summary.cshtml" />
     <Content Include="Views\Cart\Checkout.cshtml" />
+    <Content Include="Views\Cart\Complete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

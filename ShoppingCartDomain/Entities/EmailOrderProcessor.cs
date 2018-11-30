@@ -38,7 +38,7 @@ namespace ShoppingCartDomain.Entities
 
                 StringBuilder body = new StringBuilder()
                     .AppendLine("A new order has been made")
-                    .AppendLine("_--")
+                    .AppendLine("---")
                     .AppendLine("Items:");
 
                 foreach(var item in cart.GetCartItems)
@@ -58,7 +58,7 @@ namespace ShoppingCartDomain.Entities
                     .AppendLine(shippingInfo.State ?? "")
                     .AppendLine(shippingInfo.Country)
                     .AppendLine(shippingInfo.ZipCode)
-                    .AppendLine("--_");
+                    .AppendLine("---");
 
                 MailMessage mailMessage = new MailMessage(
                     emailSettings.MailFromAddress,

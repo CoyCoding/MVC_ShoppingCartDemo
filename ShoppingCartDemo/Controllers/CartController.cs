@@ -8,6 +8,7 @@ using ShoppingCartDomain.Abstract;
 using ShoppingCartDemo.Models.HtmlHelpers;
 using ShoppingCartDemo.Models.ViewModel;
 using ShoppingCartDomain.Entities;
+using ShoppingCartDemo.Models.Helpers.ViewModelHelpers;
 
 namespace ShoppingCartDemo.Controllers
 {
@@ -70,7 +71,6 @@ namespace ShoppingCartDemo.Controllers
         public ViewResult Checkout()
         {
 
-
             return View(new ShippingDetails());
             
         }
@@ -86,8 +86,10 @@ namespace ShoppingCartDemo.Controllers
             if (ModelState.IsValid)
             {
                 _orderProcessor.ProcessOrder(cart, shippingDetails);
+                CartIndexViewModel orderedItems = cart.ConvertToViewModel();
                 cart.Clear();
-                return View("Complete");
+
+                return View("Complete", orderedItems);
             }
             else
             {
