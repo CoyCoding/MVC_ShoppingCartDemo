@@ -86,7 +86,8 @@ namespace ShoppingCartDemo.Controllers
             if (ModelState.IsValid)
             {
                 _orderProcessor.ProcessOrder(cart, shippingDetails);
-                CartIndexViewModel orderedItems = cart.ConvertToViewModel();
+                CartIndexViewModel orderedItems = new CartIndexViewModel();
+                orderedItems = cart.ConvertToViewModel();
                 cart.Clear();
 
                 return View("Complete", orderedItems);

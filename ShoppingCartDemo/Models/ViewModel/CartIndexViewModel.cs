@@ -10,5 +10,10 @@ namespace ShoppingCartDemo.Models.ViewModel
     {
         public Cart Cart { get; set; }
         public string ReturnUrl { get; set; }
+
+        public CartIndexViewModel()
+        {
+            this.Cart = new Cart();
+        }
     }
 }

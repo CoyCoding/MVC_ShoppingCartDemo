@@ -8,7 +8,7 @@
 <h2>Thank you for ordering!</h2>
 <p>Your order for &lt;insert items&gt;</p>
 <ul>
-    @foreach (var item in Model.GetCartItems)
+    @foreach (var item in Model.Cart.GetCartItems)
     {
         <li>@item.Product.Name - @item.Quantity</li>
     }
