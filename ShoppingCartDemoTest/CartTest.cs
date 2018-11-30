@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Linq;
+using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
+using ShoppingCartDemo.Controllers;
+using ShoppingCartDomain.Abstract;
 using ShoppingCartDomain.Entities;
 
 namespace ShoppingCartDemoTest
@@ -29,6 +33,7 @@ namespace ShoppingCartDemoTest
             Assert.AreEqual(cart.GetCartItems.Any(), false);
         }
 
+        [TestMethod]
         public void Does_Increase_Quantity()
         {
             //Arrange
@@ -47,6 +52,7 @@ namespace ShoppingCartDemoTest
             Assert.AreEqual(list[1].Quantity, 1);
         }
 
+        [TestMethod]
         public void Calculate_Cart_Total()
         {
             Product p1 = new Product { Id = 1, Name = "P1", Price = 100m};
@@ -59,6 +65,31 @@ namespace ShoppingCartDemoTest
             cart.AddItem(p1, 2);
 
             Assert.AreEqual(cart.CartValueTotal(), 400m);
+
+        }
+
+        [TestMethod]
+        public void Cannot_Checkout_Empty_Cart()
+        {
+            //Arrange Test
+            //Mock- create order processor
+            Mock<IOrderProcessor> mock = new Mock<IOrderProcessor>();
+            //Mock - create empty cart
+            Cart cart = new Cart();
+            //Mock - create shipping Details
+            ShippingDetails shippingDetails = new ShippingDetails();
+            //Create instance of the cart controller for testing
+            CartController cartController = new CartController(null, mock.Object);
+
+            //Act - collect the result from the Checkout Action
+            ViewResult result = cartController.Checkout(cart, shippingDetails);
+
+            //Assert - check that an empty cart will not be processed
+            mock.Verify(m => m.ProcessOrder(It.IsAny<Cart>(), It.IsAny<ShippingDetails>()), Times.Never());
+            //Assert - check that the method returns default
+            Assert.AreEqual("", result.ViewName);
+            //Assert - check that the model was invalid
+            Assert.AreEqual(false, result.ViewData.ModelState.IsValid);
 
         }
     }
