@@ -72,21 +72,67 @@ namespace ShoppingCartDemoTest
         public void Cannot_Checkout_Empty_Cart()
         {
             //Arrange Test
-            //Mock- create order processor
+            //Mock - create order processor
+            //     - create empty cart
+            //     - create instance of the cart controller for testing
             Mock<IOrderProcessor> mock = new Mock<IOrderProcessor>();
-            //Mock - create empty cart
             Cart cart = new Cart();
-            //Mock - create shipping Details
-            ShippingDetails shippingDetails = new ShippingDetails();
-            //Create instance of the cart controller for testing
             CartController cartController = new CartController(null, mock.Object);
 
             //Act - collect the result from the Checkout Action
-            ViewResult result = cartController.Checkout(cart, shippingDetails);
+            ViewResult result = cartController.Checkout(cart, new ShippingDetails());
 
             //Assert - check that an empty cart will not be processed
             mock.Verify(m => m.ProcessOrder(It.IsAny<Cart>(), It.IsAny<ShippingDetails>()), Times.Never());
             //Assert - check that the method returns default
+            Assert.AreEqual("", result.ViewName);
+            //Assert - check that the model was invalid
+            Assert.AreEqual(false, result.ViewData.ModelState.IsValid);
+
+        }
+
+        [TestMethod]
+        public void Can_Checkout_And_Submit_Order()
+        {
+            //Arrange
+            //Mock - create order processor
+            //     - create cart with one item
+            //     - create instance of the cart controller for testing
+            var mock = new Mock<IOrderProcessor>();
+            Cart cart = new Cart();
+            cart.AddItem(new Product(), 1);
+            CartController target = new CartController(null, mock.Object);
+
+            //Act - checkout with simulated error
+            ViewResult result = target.Checkout(cart, new ShippingDetails());
+
+            //Assert - order not passed because Shipping Details error
+            mock.Verify(m => m.ProcessOrder(It.IsAny<Cart>(), It.IsAny<ShippingDetails>()), Times.Once());
+            //Assert - default view is returned
+            Assert.AreEqual("Complete", result.ViewName);
+            //Assert - check that the model was invalid
+            Assert.AreEqual(true, result.ViewData.ModelState.IsValid);
+        }
+
+        [TestMethod]
+        public void  Cannot_Checkout_Invaild_ShippingDetails()
+        {
+            //Arrange
+            //Mock - create order processor
+            //     - create cart with one item
+            //     - create instance of the cart controller for testing
+            var mock = new Mock<IOrderProcessor>();
+            Cart cart = new Cart();
+            cart.AddItem(new Product(), 1);
+            CartController target = new CartController(null, mock.Object);
+            target.ModelState.AddModelError("error", "error");
+
+            //Act - checkout with simulated error
+            ViewResult result = target.Checkout(cart, new ShippingDetails());
+
+            //Assert - order not passed because Shipping Details error
+            mock.Verify(m => m.ProcessOrder(It.IsAny<Cart>(), It.IsAny<ShippingDetails>()), Times.Never());
+            //Assert - default view is returned
             Assert.AreEqual("", result.ViewName);
             //Assert - check that the model was invalid
             Assert.AreEqual(false, result.ViewData.ModelState.IsValid);
