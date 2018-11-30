@@ -73,6 +73,8 @@
     <Compile Include="Entities\Cart.cs" />
     <Compile Include="Entities\CartItem.cs" />
     <Compile Include="Entities\Category.cs" />
+    <Compile Include="Entities\EmailOrderProcessor.cs" />
+    <Compile Include="Entities\EmailSettings.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\ShippingDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
