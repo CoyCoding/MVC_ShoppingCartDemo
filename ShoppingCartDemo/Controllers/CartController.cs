@@ -103,7 +103,7 @@ namespace ShoppingCartDemo.Controllers
             return _productRepo.Products.FirstOrDefault(p => p.Id == productId);
         }
 
-        public PartialViewResult Summary(Cart cart)
+        public PartialViewResult _Summary(Cart cart)
         {
             return PartialView(cart);
         }
