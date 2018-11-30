@@ -68,9 +68,12 @@ namespace ShoppingCartDemo.Controllers
             return RedirectToAction("Index", new { returnUrl });
         }
 
-        public ViewResult Checkout()
+        public ActionResult Checkout(Cart cart)
         {
-
+            if(cart.GetCartItems.Count() == 0)
+            {
+                return RedirectToAction("Index");
+            }
             return View(new ShippingDetails());
             
         }
