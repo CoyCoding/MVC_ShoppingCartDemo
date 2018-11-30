@@ -27,7 +27,7 @@ namespace ShoppingCartDemo.Controllers
             };
         }
 
-        public PartialViewResult Menu(string category = null)
+        public PartialViewResult _Menu(string category = null)
         {
             _categories.CurrentCategory = category;        
 

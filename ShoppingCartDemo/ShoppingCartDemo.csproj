@@ -352,9 +352,9 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Shared\_ProductStorePartial.cshtml" />
-    <Content Include="Views\Category\Menu.cshtml" />
+    <Content Include="Views\Category\_Menu.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
-    <Content Include="Views\Shared\_Summary.cshtml" />
+    <Content Include="Views\Cart\_Summary.cshtml" />
     <Content Include="Views\Cart\Checkout.cshtml" />
     <Content Include="Views\Cart\Complete.cshtml" />
   </ItemGroup>
