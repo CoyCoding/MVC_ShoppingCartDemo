@@ -15,7 +15,7 @@ namespace ShoppingCartDemo.Controllers
     {
         private IApplicationDbContext _productRepo;
         private IOrderProcessor _orderProcessor;
-        
+
         // GET: Cart
         public CartController(IApplicationDbContext productRepo, IOrderProcessor orderProcessor)
         {
@@ -42,7 +42,7 @@ namespace ShoppingCartDemo.Controllers
                 cart.AddItem(product, 1);
             }
 
-            return RedirectToAction("Index", new { returnUrl} );
+            return RedirectToAction("Index", new { returnUrl });
         }
 
         [HttpPost]
@@ -50,7 +50,7 @@ namespace ShoppingCartDemo.Controllers
         {
             Product product = GetProductToAdd(Id);
 
-            if(product != null)
+            if (product != null)
             {
                 cart.RemoveSingleItem(product);
             }
@@ -65,6 +65,14 @@ namespace ShoppingCartDemo.Controllers
             cart.Clear();
 
             return RedirectToAction("Index", new { returnUrl });
+        }
+
+        public ViewResult Checkout()
+        {
+
+
+            return View(new ShippingDetails());
+            
         }
 
         [HttpPost]
