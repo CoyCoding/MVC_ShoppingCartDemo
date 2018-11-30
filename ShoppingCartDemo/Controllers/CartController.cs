@@ -29,7 +29,7 @@ namespace ShoppingCartDemo.Controllers
             return View(new CartIndexViewModel
             {
                 Cart = cart,
-                ReturnUrl = returnUrl
+                ReturnUrl = returnUrl ?? "Store" 
             });
         }
 

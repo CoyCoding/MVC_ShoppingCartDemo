@@ -4,6 +4,7 @@
 @{
                 ViewBag.Title = "Checkout";
                 Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/CheckoutErrors.css" rel="stylesheet" />
 }
 
 <h2>Checkout :</h2>
@@ -11,6 +12,7 @@
 
 @using (Html.BeginForm())
 {
+    @Html.ValidationSummary()
     <h3>Shipping Info</h3>
     <div class="form-group">
         <label>Name</label>

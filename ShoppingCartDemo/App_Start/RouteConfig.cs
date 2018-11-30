@@ -15,6 +15,8 @@ namespace ShoppingCartDemo
 
             routes.MapMvcAttributeRoutes();
 
+
+ 
             routes.MapRoute(null,
                "Store", new
                {
@@ -52,6 +54,7 @@ namespace ShoppingCartDemo
                },
                new { page = @"\d+" }
                 );
+
 
             routes.MapRoute(
                 name: null,
