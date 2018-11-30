@@ -31,7 +31,6 @@ div.product-grid:nth-child(1) {
 
 .store-banner {
     height: 10vh;
-    width: 100vw;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
