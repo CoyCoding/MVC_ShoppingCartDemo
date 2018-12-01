@@ -8,6 +8,11 @@
     margin-bottom: .5rem;
 }
 
+#CatSelection {
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
 div.product-grid:nth-child(3n+4) {
     padding-left: 0px;
     padding-right: 0px;
