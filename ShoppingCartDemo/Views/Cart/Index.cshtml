@@ -6,7 +6,7 @@
 }
 
 <h2 class="text-center">@ViewBag.Title</h2>
-<h2 class="test-center">@Model.ReturnUrl</h2>
+
 <table class="table">
     <thead>
         <tr>
@@ -42,11 +42,14 @@
             <td colspan="3" class="text-right">Total:</td>
             <td class="text-right">@Model.Cart.CartValueTotal().ToString("c")</td>
             <td class="text-center">
-                @using (Html.BeginForm("RemoveAllFromCart", "Cart"))
+                @if (Model.Cart.GetCartItems.Count() != 0)
+                {
+                using (Html.BeginForm("RemoveAllFromCart", "Cart"))
                 {
                     @Html.HiddenFor(x => x.ReturnUrl)
                     <input class="btn btn-sm btn-warning"
                            type="submit" value="Remove All" />
+                }
                 }
             </td>
         </tr>
