@@ -47,4 +47,7 @@
         }
 
     </table>
+    <div style="right: 0" class="btn-group-sm ml-auto m-3">
+        @Html.PaginationLinks(Model.PagingInfo, pageNum => Url.Action("Index", new { page = pageNum, category = Model.CurrentCategory }))
+    </div>
 </div>
