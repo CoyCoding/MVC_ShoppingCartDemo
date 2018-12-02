@@ -51,5 +51,21 @@ namespace ShoppingCartDemo.Controllers
             var test = productList.Products.Count();
             return View(productList);
         }
+
+        public ActionResult Edit()
+        {
+            return View();
+        }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+
+        public ActionResult Delete()
+        {
+            return View();
+        }
     }
 }
