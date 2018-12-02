@@ -2,7 +2,8 @@
 @model ShoppingCartDemo.Models.ProductListViewModel
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Controller = "AdminCrud";
+    ViewBag.Action = "Index";
     Layout = "~/views/shared/_Layout.cshtml";
 }
 
@@ -11,7 +12,8 @@
    type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false">
     Categories
 </a>
-<div class="collapse multi-collapse">@Html.Action("_Menu", "Category")</div>
+<div class="collapse multi-collapse">@Html.Action("_Menu", "Category",
+                                    new ControllerInfo { Controller = ViewBag.Controller, Action = ViewBag.Action })</div>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>

@@ -4,7 +4,7 @@
     new { @class = "btn btn-block btn-default btn-outline-info product" +
     (Model.CurrentCategory == null ? " active btn-lg" : "")})
 
-@foreach (var category in Model.Categories)
+@foreach(var category in Model.Categories)
 {
     @Html.RouteLink(category, new
     {
@@ -12,9 +12,9 @@
     action= ViewBag.Action,
     category = category,
     page = 1
-    },
+    }, 
 
-    new { @class = "btn btn-block btn-outline-info product" +
+    new { @class = "btn btn-block btn-outline-info product" + 
     (category == Model.CurrentCategory ? " active btn-lg" : "")})
-}
+ }
 

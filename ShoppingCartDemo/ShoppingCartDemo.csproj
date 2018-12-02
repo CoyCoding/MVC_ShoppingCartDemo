@@ -237,6 +237,7 @@
     <Compile Include="Models\Binder\CartBinder.cs" />
     <Compile Include="Models\CartCalculator\CartDiscount.cs" />
     <Compile Include="Models\CartCalculator\ICartDiscount.cs" />
+    <Compile Include="Models\Helpers\HtmlHelpers\ControllerInfo.cs" />
     <Compile Include="Models\Helpers\ViewModelHelpers\CartToViewModel.cs" />
     <Compile Include="Models\Identity\AccountViewModels.cs" />
     <Compile Include="Models\Identity\IdentityModels.cs" />

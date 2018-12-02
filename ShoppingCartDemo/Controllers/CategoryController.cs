@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using ShoppingCartDemo.Models;
 using ShoppingCartDemo.Models.ViewModel;
+using ShoppingCartDemo.Models.HtmlHelpers;
 
 namespace ShoppingCartDemo.Controllers
 {
@@ -27,8 +28,10 @@ namespace ShoppingCartDemo.Controllers
             };
         }
 
-        public PartialViewResult _Menu(string category = null)
+        public PartialViewResult _Menu(ControllerInfo controllerInfo, string category = null)
         {
+            ViewBag.Controller = controllerInfo.Controller;
+            ViewBag.Action = controllerInfo.Action;
             _categories.CurrentCategory = category;        
 
             return PartialView(_categories);
