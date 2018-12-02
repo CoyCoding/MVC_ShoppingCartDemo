@@ -1,42 +1,41 @@
 ﻿@using ShoppingCartDemo.Models.HtmlHelpers
 @model ShoppingCartDemo.Models.ProductListViewModel
-    <head>
-        <link rel="stylesheet" type="text/css" href="~/Content/Store.css">
-    </head>
 
 @{
     ViewBag.Controller = "Home";
     ViewBag.Action = "Store";
     Layout = "~/views/shared/_Layout.cshtml";
+    <link rel="stylesheet" type="text/css" href="~/Content/Store.css">
 }
-    <div class="store-banner container body-content">
-        <div class="store-banner-text text-center" ><h2>@ViewBag.Title</h2></div>
-    </div>
+<div class="store-banner container body-content">
+    <div class="store-banner-text text-center"><h2>@ViewBag.Title</h2></div>
+</div>
 
-    <div>
-        <div class="row">  
-            <div id="CatSelection" class="ol-5 col-lg-3">
-                <a class="btn btn-block btn-default btn-outline-info product active btn-lg collapse-btn" 
-                        type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false">
-                Categories</a>
-                <div class="collapse multi-collapse">
-                @Html.Action("_Menu", "Category", 
+<div>
+    <div class="row">
+        <div id="CatSelection" class="ol-5 col-lg-3">
+            <a class="btn btn-block btn-default btn-outline-info product active btn-lg collapse-btn"
+               type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false">
+                Categories
+            </a>
+            <div class="collapse multi-collapse">
+                @Html.Action("_Menu", "Category",
                 new ControllerInfo {Controller = ViewBag.Controller, Action = ViewBag.Action })
-                </div>
-                
             </div>
-            <div id="cart-selections" class="row ol-7 col-lg-9">
-                @foreach (var product in Model.Products)
-                {
 
-                    @Html.Partial("_ProductStorePartial", product)
-                }
-            </div>
-            <div style="right: 0" class="btn-group-sm ml-auto m-3">
-                @Html.PaginationLinks(Model.PagingInfo, pageNum => Url.Action("Store", new { page = pageNum, category = Model.CurrentCategory }))
-            </div>
-        </div>      
+        </div>
+        <div id="cart-selections" class="row ol-7 col-lg-9">
+            @foreach (var product in Model.Products)
+            {
+
+                @Html.Partial("_ProductStorePartial", product)
+            }
+        </div>
+        <div style="right: 0" class="btn-group-sm ml-auto m-3">
+            @Html.PaginationLinks(Model.PagingInfo, pageNum => Url.Action("Store", new { page = pageNum, category = Model.CurrentCategory }))
+        </div>
     </div>
+</div>
 
 @section Scripts{
 

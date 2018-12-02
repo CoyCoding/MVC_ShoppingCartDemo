@@ -7,38 +7,44 @@
     Layout = "~/views/shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
-<a class="btn btn-block btn-default btn-outline-info product active btn-lg collapse-btn"
-   type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false">
-    Categories
-</a>
-<div class="collapse multi-collapse">@Html.Action("_Menu", "Category",
-                                    new ControllerInfo { Controller = ViewBag.Controller, Action = ViewBag.Action })</div>
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Actions</th>
-    </tr>
+<h2>Edit Operations</h2>
+<div class="row">
+    <div id="CatSelection" class="ol-5 col-lg-3">
+        <a class="btn btn-block btn-default btn-outline-info product active btn-lg collapse-btn"
+           type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false">
+            Categories
+        </a>
 
-    @foreach (var item in Model.Products)
-    {
+        <div class="collapse multi-collapse" style="margin: .5rem 0 .5rem 0">
+            @Html.Action("_Menu", "Category",
+            new ControllerInfo { Controller = ViewBag.Controller, Action = ViewBag.Action })
+        </div>
+        @Html.ActionLink("Add New Product", "Create", null, new { @class = "btn btn-block btn-default btn-outline-info product active btn-lg collapse-btn", type = "button" })
+    </div>
+
+    <table class="table col-lg-9">
         <tr>
-            <td>
-                @Html.DisplayFor(m => item.Name)
-            </td>
-            <td>
-                @item.Name
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
+            <th class="text-left">Name</th>
+            <th class="text-right">Price</th>
+            <th class="text-center">Actions</th>
         </tr>
-    }
 
-</table>
+        @foreach (var item in Model.Products)
+        {
+            <tr>
+                <td class="text-left">
+                    @Html.DisplayFor(m => item.Name)
+                </td>
+                <td class="text-right">
+                    @Html.DisplayFor(m => item.Price)
+                </td>
+                <td class="text-center">
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
