@@ -1,6 +1,6 @@
 ﻿@model ShoppingCartDemo.Models.ViewModel.CategoryViewModel
 
-@Html.ActionLink("All","Store", "Home", null,
+@Html.ActionLink("All", (string)ViewBag.Action, (string)ViewBag.Controller, null,
     new { @class = "btn btn-block btn-default btn-outline-info product" +
     (Model.CurrentCategory == null ? " active btn-lg" : "")})
 
