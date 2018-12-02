@@ -6,7 +6,8 @@
 
 @{
 
-    ViewBag.Title = "Product Display";
+    ViewBag.Controller = "Home";
+    ViewBag.Action = "Store";
     Layout = "~/views/shared/_Layout.cshtml";
 
 }
@@ -20,7 +21,7 @@
                 <a class="btn btn-block btn-default btn-outline-info product active btn-lg collapse-btn" 
                         type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false">
                 Categories</a>
-                <div class="collapse multi-collapse">@Html.Action("_Menu", "Category")</div>
+                <div class="collapse multi-collapse">@Html.Action("_Menu", "Category", )</div>
                 
             </div>
             <div id="cart-selections" class="row ol-7 col-lg-9">

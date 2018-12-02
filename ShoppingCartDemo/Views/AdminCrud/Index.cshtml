@@ -1,0 +1,42 @@
+﻿@using ShoppingCartDemo.Models.HtmlHelpers
+@model ShoppingCartDemo.Models.ProductListViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/views/shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+<a class="btn btn-block btn-default btn-outline-info product active btn-lg collapse-btn"
+   type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false">
+    Categories
+</a>
+<div class="collapse multi-collapse">@Html.Action("_Menu", "Category")</div>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Actions</th>
+    </tr>
+
+    @foreach (var item in Model.Products)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(m => item.Name)
+            </td>
+            <td>
+                @item.Name
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
+
+</table>

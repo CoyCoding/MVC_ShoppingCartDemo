@@ -56,7 +56,7 @@ namespace ShoppingCartDemo.Controllers
 
                 CurrentCategory = currentCategory?.Name 
             };
-
+            var test = productList.Products.Count();
             return View(productList);
                
         }
