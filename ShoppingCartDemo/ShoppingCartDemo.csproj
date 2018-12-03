@@ -362,6 +362,7 @@
     <Content Include="Views\Cart\Complete.cshtml" />
     <Content Include="Views\Shared\_CrudLayout.cshtml" />
     <Content Include="Views\AdminCrud\Index.cshtml" />
+    <Content Include="Views\AdminCrud\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

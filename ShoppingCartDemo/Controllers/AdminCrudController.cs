@@ -1,5 +1,6 @@
 ﻿using ShoppingCartDemo.Models;
 using ShoppingCartDemo.Models.HtmlHelpers;
+using ShoppingCartDomain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,9 +53,11 @@ namespace ShoppingCartDemo.Controllers
             return View(productList);
         }
 
-        public ActionResult Edit()
+        public ActionResult Edit(int Id)
         {
-            return View();
+            Product product = _productRepo.Products
+                .FirstOrDefault(p => p.Id == Id);
+            return View(product);
         }
 
         public ActionResult Create()
