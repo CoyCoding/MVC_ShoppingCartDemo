@@ -7,6 +7,10 @@ body {
     padding-bottom: 20px;
 }
 
+.custom-nav {
+    background-color: aqua;
+    background-image: linear-gradient(to bottom, #009fb2, 20%, #002622, #03463b, #009fb2);
+}
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
