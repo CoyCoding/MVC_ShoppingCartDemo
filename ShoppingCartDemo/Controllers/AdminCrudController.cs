@@ -60,6 +60,23 @@ namespace ShoppingCartDemo.Controllers
             return View(product);
         }
 
+        [HttpPost]
+        public ActionResult Edit(Product product)
+        {
+            if (ModelState.IsValid)
+            {
+                _productRepo.SaveProduct(product);
+                TempData["message"] = string.Format("{0} has beed edited succesfully", product.Name);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(product);
+            }
+            
+            
+        }
+
         public ActionResult Create()
         {
             return View();

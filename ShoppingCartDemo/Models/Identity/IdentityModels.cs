@@ -24,6 +24,8 @@ namespace ShoppingCartDemo.Models
         DbSet<Category> Categories { get; set; }
 
         int SaveChanges();
+
+        void SaveProduct(Product product);
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IApplicationDbContext
@@ -39,6 +41,28 @@ namespace ShoppingCartDemo.Models
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
+        }
+
+        public void SaveProduct(Product product)
+        {
+            if(product.Id == 0)
+            {
+                this.Products.Add(product);
+            }
+            else
+            {
+                Product dbProduct = this.Products.Find(product.Id);
+                if(dbProduct != null)
+                {
+                    dbProduct.Name = product.Name;
+                    dbProduct.Price = product.Price;
+                    dbProduct.Quantity = product.Quantity;
+                    dbProduct.Seller = product.Seller;
+                    dbProduct.CategoryId = product.CategoryId;
+                    dbProduct.Description = product.Description;
+                }
+            }
+            this.SaveChanges();
         }
     }
 }
