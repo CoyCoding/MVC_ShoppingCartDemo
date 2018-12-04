@@ -113,8 +113,12 @@ namespace ShoppingCartDemo.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Details(int Id)
+        public ActionResult Details(int? Id)
         {
+            if(Id == null)
+            {
+                return RedirectToAction("Index");
+            }
 
             var product = _productRepo.Products.Include(p => p.Category)
                 .SingleOrDefault(p => p.Id == Id);
