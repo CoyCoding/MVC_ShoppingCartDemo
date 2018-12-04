@@ -76,6 +76,7 @@
     <Compile Include="Entities\EmailOrderProcessor.cs" />
     <Compile Include="Entities\EmailSettings.cs" />
     <Compile Include="Entities\Product.cs" />
+    <Compile Include="Entities\ProductImage.cs" />
     <Compile Include="Entities\ShippingDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

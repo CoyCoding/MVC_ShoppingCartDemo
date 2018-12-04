@@ -8,15 +8,15 @@ using System.Web.Mvc;
 
 namespace ShoppingCartDomain.Entities
 {
-        public class Product
-        {
+    public class Product
+    {
 
-            [HiddenInput(DisplayValue = false)]
-            public int Id { get; set; }
+        [HiddenInput(DisplayValue = false)]
+        public int Id { get; set; }
 
-            [Required(ErrorMessage = "Please enter a Product Name")]
-            [Display(Name = "Product Name")]
-            public string Name { get; set; }
+        [Required(ErrorMessage = "Please enter a Product Name")]
+        [Display(Name = "Product Name")]
+        public string Name { get; set; }
 
 
 
@@ -31,7 +31,7 @@ namespace ShoppingCartDomain.Entities
         [Required(ErrorMessage = "Please enter a Quantity in Stock")]
         public int Quantity { get; set; }
 
-        
+
         public Category Category { get; set; }
 
         [Required(ErrorMessage = "Please enter a Category")]
@@ -39,6 +39,9 @@ namespace ShoppingCartDomain.Entities
 
         [Required(ErrorMessage = "Please enter a Seller")]
         public string Seller { get; set; }
+
+        public ICollection<ProductImage> Images { get; set; }
+
         }
     }
 

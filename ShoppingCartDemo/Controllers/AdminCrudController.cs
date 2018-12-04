@@ -123,6 +123,18 @@ namespace ShoppingCartDemo.Controllers
             var product = _productRepo.Products.Include(p => p.Category)
                 .SingleOrDefault(p => p.Id == Id);
 
+            var images = _productRepo.ProductImages.Where(i => i.ProductId == Id);
+
+            if(images == null)
+            {
+                return View(new ProductViewModel());
+            }
+            
+            foreach(var image in images)
+            {
+                product.Images.Add(image);
+            }
+
             var productViewModel = new ProductViewModel(product)
             {
                 Categories = _productRepo.Categories.ToList()

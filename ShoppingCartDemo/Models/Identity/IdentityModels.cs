@@ -22,6 +22,7 @@ namespace ShoppingCartDemo.Models
     {
         DbSet<Product> Products { get; set; }
         DbSet<Category> Categories { get; set; }
+        DbSet<ProductImage> ProductImages { get; set; }
 
         int SaveChanges();
 
@@ -34,6 +35,7 @@ namespace ShoppingCartDemo.Models
     {
         public DbSet<Product> Products {get; set;}
         public DbSet<Category>  Categories { get; set; }
+        public DbSet<ProductImage> ProductImages { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

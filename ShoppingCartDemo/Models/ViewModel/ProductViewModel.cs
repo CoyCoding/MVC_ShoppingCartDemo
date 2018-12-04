@@ -37,6 +37,7 @@ namespace ShoppingCartDemo.Models.ViewModel
         [Required(ErrorMessage = "Please enter a Seller")]
         public string Seller { get; set; }
 
+        public IEnumerable<ProductImage> Images { get; set; }
 
         public ProductViewModel()
         {
@@ -52,6 +53,7 @@ namespace ShoppingCartDemo.Models.ViewModel
             Quantity = product.Quantity;
             CategoryId = product.CategoryId;
             Seller = product.Seller;
+            Images = product.Images;
         }
 
     }

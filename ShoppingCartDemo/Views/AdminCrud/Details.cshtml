@@ -27,6 +27,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Seller)
         </th>
+        <th>
+
+        </th>
         <th></th>
     </tr>
     <tr>
@@ -47,6 +50,9 @@
         </td>
         <td>
             @Model.Seller
+        </td>
+        <td>
+            @Model.Images.ToList()[0].ImageDescription
         </td>
     </tr>
 
