@@ -1,5 +1,4 @@
-﻿@model ShoppingCartDomain.Entities.Product
-
+﻿@model ShoppingCartDemo.Models.ViewModel.ProductViewModel
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -58,18 +57,18 @@
             </div>
 
             <div class="form-group col-md-10">
-                @Html.LabelFor(model => model.CategoryId, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="">
-                    @Html.EditorFor(model => model.CategoryId, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group col-md-10">
                 @Html.LabelFor(model => model.Seller, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="">
                     @Html.EditorFor(model => model.Seller, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Seller, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group col-md-10">
+                @Html.LabelFor(model => model.CategoryId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="">
+                    @Html.DropDownListFor(m => m.CategoryId, new SelectList(Model.Categories, "Id", "Name"), "Select Category", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
                 </div>
             </div>
 

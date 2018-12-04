@@ -10,6 +10,7 @@ namespace ShoppingCartDomain.Entities
 {
         public class Product
         {
+
             [HiddenInput(DisplayValue = false)]
             public int Id { get; set; }
 
@@ -21,6 +22,8 @@ namespace ShoppingCartDomain.Entities
             public decimal Price { get; set; }
 
             public int Quantity { get; set; }
+
+            public Category Category { get; set; }
 
             public int CategoryId { get; set; }
 

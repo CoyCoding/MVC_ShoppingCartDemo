@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
+using ShoppingCartDemo.Models.ViewModel;
 
 namespace ShoppingCartDemo.Controllers
 {
@@ -55,9 +57,21 @@ namespace ShoppingCartDemo.Controllers
 
         public ActionResult Edit(int Id)
         {
-            Product product = _productRepo.Products
+           
+            var product = _productRepo.Products.Include(p => p.Category)
                 .FirstOrDefault(p => p.Id == Id);
-            return View(product);
+
+            if(product == null)
+            {
+                return HttpNotFound();
+            }
+
+            var productViewModel = new ProductViewModel(product)
+            {
+                Categories = _productRepo.Categories.ToList()
+            };
+
+            return View(productViewModel);
         }
 
         [HttpPost]
