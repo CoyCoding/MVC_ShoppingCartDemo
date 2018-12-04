@@ -373,6 +373,7 @@
     <Content Include="Views\Shared\_CrudLayout.cshtml" />
     <Content Include="Views\AdminCrud\Index.cshtml" />
     <Content Include="Views\AdminCrud\Edit.cshtml" />
+    <Content Include="Views\AdminCrud\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

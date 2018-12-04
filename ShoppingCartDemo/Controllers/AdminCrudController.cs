@@ -112,6 +112,20 @@ namespace ShoppingCartDemo.Controllers
             _productRepo.DeleteProduct(Id);
             return RedirectToAction("Index");
         }
+
+        public ActionResult Details(int Id)
+        {
+
+            var product = _productRepo.Products.Include(p => p.Category)
+                .SingleOrDefault(p => p.Id == p.Id);
+
+            var productViewModel = new ProductViewModel(product)
+            {
+                Categories = _productRepo.Categories.ToList()
+            };
+
+            return View(productViewModel);
+        }
     }
 
 }
