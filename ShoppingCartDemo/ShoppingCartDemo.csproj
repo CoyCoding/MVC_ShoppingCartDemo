@@ -237,6 +237,10 @@
     <Compile Include="Migrations\201812040105003_updateProduct.Designer.cs">
       <DependentUpon>201812040105003_updateProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812040142131_updateProducts.cs" />
+    <Compile Include="Migrations\201812040142131_updateProducts.Designer.cs">
+      <DependentUpon>201812040142131_updateProducts.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Binder\CartBinder.cs" />
     <Compile Include="Models\CartCalculator\CartDiscount.cs" />
@@ -402,6 +406,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812040105003_updateProduct.resx">
       <DependentUpon>201812040105003_updateProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812040142131_updateProducts.resx">
+      <DependentUpon>201812040142131_updateProducts.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -85,7 +85,12 @@ namespace ShoppingCartDemo.Controllers
             }
             else
             {
-                return View(product);
+                var productViewModel = new ProductViewModel(product)
+                {
+                    Categories = _productRepo.Categories.ToList()
+                };
+
+                return View(productViewModel);
             }
             
             
@@ -93,7 +98,12 @@ namespace ShoppingCartDemo.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            var productViewModel = new ProductViewModel()
+            {
+                Categories = _productRepo.Categories.ToList()
+            };
+
+            return View("edit", productViewModel);
         }
 
 
@@ -102,4 +112,6 @@ namespace ShoppingCartDemo.Controllers
             return View();
         }
     }
+
 }
+

@@ -2,22 +2,21 @@
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/CheckoutErrors.css" rel="stylesheet" />
 }
 <style>
     input,
     select,
     textarea {
         max-width: none;
-  
- 
     }
 </style>
 <h2>Edit</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "AdminCrud"))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Product</h4>
         <hr />
@@ -83,5 +82,10 @@
             </div>
         </div>
     </div>
+}
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
 }
 
