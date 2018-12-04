@@ -117,7 +117,7 @@ namespace ShoppingCartDemo.Controllers
         {
 
             var product = _productRepo.Products.Include(p => p.Category)
-                .SingleOrDefault(p => p.Id == p.Id);
+                .SingleOrDefault(p => p.Id == Id);
 
             var productViewModel = new ProductViewModel(product)
             {

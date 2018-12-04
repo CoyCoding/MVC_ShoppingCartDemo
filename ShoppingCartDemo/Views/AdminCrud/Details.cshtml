@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ShoppingCartDemo.Models.ViewModel.ProductViewModel>
+﻿@model ShoppingCartDemo.Models.ViewModel.ProductViewModel
 
 @{
     ViewBag.Title = "Details";
@@ -7,9 +7,6 @@
 
 <h2>Details</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -32,33 +29,26 @@
         </th>
         <th></th>
     </tr>
-
-@foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
+            @Model.Name
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Description)
+            @Model.Description
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Price)
+            @Model.Price
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Quantity)
+            @Model.Quantity
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CategoryId)
+            @Model.Categories.Single(c => c.Id == Model.CategoryId).Name
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Seller)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Model.Seller
         </td>
     </tr>
-}
+
 
 </table>
