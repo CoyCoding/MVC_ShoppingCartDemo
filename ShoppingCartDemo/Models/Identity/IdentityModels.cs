@@ -26,6 +26,8 @@ namespace ShoppingCartDemo.Models
         int SaveChanges();
 
         void SaveProduct(Product product);
+
+        void DeleteProduct(int id);
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IApplicationDbContext
@@ -64,5 +66,16 @@ namespace ShoppingCartDemo.Models
             }
             this.SaveChanges();
         }
+
+        public void DeleteProduct(int id)
+        {
+            Product dbProduct = this.Products.Find(id);
+            if(dbProduct != null)
+            {
+                this.Products.Remove(dbProduct);
+                this.SaveChanges();
+            }
+        }
     }
+
 }

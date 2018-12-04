@@ -1,0 +1,12 @@
+﻿#edit-details-delete {
+    display: inline-flex;
+   
+}
+
+#edit-details-delete a{
+    padding: 0 2px;
+}
+
+.center-action{
+    padding-right: 62px !important;
+}

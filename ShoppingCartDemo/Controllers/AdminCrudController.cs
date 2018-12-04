@@ -106,10 +106,11 @@ namespace ShoppingCartDemo.Controllers
             return View("edit", productViewModel);
         }
 
-
-        public ActionResult Delete()
+        [HttpDelete]
+        public ActionResult Delete(int Id)
         {
-            return View();
+            _productRepo.DeleteProduct(Id);
+            return RedirectToAction("Index");
         }
     }
 

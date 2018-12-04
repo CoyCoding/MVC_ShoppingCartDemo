@@ -5,6 +5,7 @@
     ViewBag.Controller = "AdminCrud";
     ViewBag.Action = "Index";
     Layout = "~/views/shared/_Layout.cshtml";
+    <link rel="stylesheet" type="text/css" href="~/Content/Crud.css">
 }
 
 <h2 class="text-center pt-2 pb-2">Edit Operations</h2>
@@ -26,7 +27,7 @@
         <tr>
             <th class="text-left">Name</th>
             <th class="text-right">Price</th>
-            <th class="text-center">Actions</th>
+            <th class="text-right center-action">Actions</th>
         </tr>
 
         @foreach (var item in Model.Products)
@@ -38,10 +39,18 @@
                 <td class="text-right">
                     @Html.DisplayFor(m => item.Price)
                 </td>
-                <td class="text-center">
-                    @Html.ActionLink("Edit", "Edit", new {  Id = item.Id}) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+
+                <td class="text-right">
+                    <div id="edit-details-delete">
+                        @Html.ActionLink("Edit", "Edit", new { Id = item.Id }) |
+                        @Html.ActionLink(" Details ", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @using (Html.BeginForm(" Delete", "AdminCrud"))
+                        {
+                            @Html.HttpMethodOverride(HttpVerbs.Delete)
+                            @Html.Hidden("Id", item.Id)
+                            <a href="javascript:$('form').submit();">Delete</a>
+                        }
+                    </div>
                 </td>
             </tr>
         }

@@ -270,6 +270,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\CheckoutErrors.css" />
+    <Content Include="Content\Crud.css" />
     <Content Include="Content\Store.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
