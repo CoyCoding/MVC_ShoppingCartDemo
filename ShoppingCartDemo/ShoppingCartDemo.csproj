@@ -241,9 +241,13 @@
     <Compile Include="Migrations\201812040142131_updateProducts.Designer.cs">
       <DependentUpon>201812040142131_updateProducts.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201812041924552_ProductImages.cs" />
-    <Compile Include="Migrations\201812041924552_ProductImages.Designer.cs">
-      <DependentUpon>201812041924552_ProductImages.cs</DependentUpon>
+    <Compile Include="Migrations\201812042322288_images.cs" />
+    <Compile Include="Migrations\201812042322288_images.Designer.cs">
+      <DependentUpon>201812042322288_images.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812042323381_imagesconnection.cs" />
+    <Compile Include="Migrations\201812042323381_imagesconnection.Designer.cs">
+      <DependentUpon>201812042323381_imagesconnection.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Binder\CartBinder.cs" />
@@ -416,8 +420,11 @@
     <EmbeddedResource Include="Migrations\201812040142131_updateProducts.resx">
       <DependentUpon>201812040142131_updateProducts.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812041924552_ProductImages.resx">
-      <DependentUpon>201812041924552_ProductImages.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201812042322288_images.resx">
+      <DependentUpon>201812042322288_images.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812042323381_imagesconnection.resx">
+      <DependentUpon>201812042323381_imagesconnection.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

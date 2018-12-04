@@ -67,5 +67,16 @@ namespace ShoppingCartDemo.Controllers
 
             return View();
         }
+
+        public FileContentResult GetImage(int Id)
+        {
+            Product product = _productRepo.Products
+                .FirstOrDefault(p => p.Id == Id);
+            if(product != null)
+            {
+                
+            }
+            return null;
+        }
     }
 }

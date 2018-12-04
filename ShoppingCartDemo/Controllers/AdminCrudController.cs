@@ -75,10 +75,19 @@ namespace ShoppingCartDemo.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(Product product)
+        public ActionResult Edit(Product product, HttpPostedFileBase images = null)
         {
             if (ModelState.IsValid)
             {
+                if(images != null)
+                {
+                    var test = images;
+                    var test1 = 1;
+                    //foreach(var image in images)
+                    //{
+                        
+                    //}
+                }
                 _productRepo.SaveProduct(product);
                 TempData["message"] = string.Format("{0} has beed edited succesfully", product.Name);
                 return RedirectToAction("Index");
@@ -122,19 +131,7 @@ namespace ShoppingCartDemo.Controllers
 
             var product = _productRepo.Products.Include(p => p.Category)
                 .SingleOrDefault(p => p.Id == Id);
-
-            var images = _productRepo.ProductImages.Where(i => i.ProductId == Id);
-
-            if(images == null)
-            {
-                return View(new ProductViewModel());
-            }
             
-            foreach(var image in images)
-            {
-                product.Images.Add(image);
-            }
-
             var productViewModel = new ProductViewModel(product)
             {
                 Categories = _productRepo.Categories.ToList()

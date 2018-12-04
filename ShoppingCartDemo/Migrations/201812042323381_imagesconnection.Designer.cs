@@ -7,13 +7,13 @@ namespace ShoppingCartDemo.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class ProductImages : IMigrationMetadata
+    public sealed partial class imagesconnection : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ProductImages));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(imagesconnection));
         
         string IMigrationMetadata.Id
         {
-            get { return "201812041924552_ProductImages"; }
+            get { return "201812042323381_imagesconnection"; }
         }
         
         string IMigrationMetadata.Source

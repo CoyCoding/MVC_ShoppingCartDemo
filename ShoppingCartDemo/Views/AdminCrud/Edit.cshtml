@@ -13,12 +13,13 @@
 </style>
 <h2>Edit</h2>
 
-@using (Html.BeginForm("Edit", "AdminCrud", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Edit", "AdminCrud", 
+    FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
 
                 @Html.AntiForgeryToken()
 
-                <div class="form-horizontal">
+    <div class="form-horizontal">
         <h4>Product</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -75,22 +76,22 @@
             <div class="form-group col-md-10">
                 <div style="position: relative">
                     <label>Image</label>
-                    <a class="btn" href='javascript:;'>
+                    <a class='btn' href='javascript:;'>
                         Choose File...
-                        <input type="file" name="Image" size="50"
+                        <input type="file" name="Images" size="50"
                                style="position:absolute; z-index:2; top: 0; left: 0;filter: alpha(opacity=0); opacity:0; background-color:transparent;color:transparent;"
                                onchange='$("#upload-file-info").html($(this).val());' />
                     </a>
                     <span class="" id="upload-file-info"></span>
                 </div>
-                @if (Model.Images == null)
+                @if (Model.Image == null)
                 {
                     <div class="form-control">No Images</div>
                 }
                 else
                 {
                     <img class="img-thumbnail" width="150" height="150" 
-                         src="@Url.Action("GetImage", "Product", new { Model.Id })" />
+                         src="@Url.Action("GetImage", "Home", new { Model.Id })" />
                 }
             </div>
 

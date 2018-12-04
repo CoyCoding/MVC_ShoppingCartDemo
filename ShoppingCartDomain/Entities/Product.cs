@@ -40,7 +40,9 @@ namespace ShoppingCartDomain.Entities
         [Required(ErrorMessage = "Please enter a Seller")]
         public string Seller { get; set; }
 
-        public ICollection<ProductImage> Images { get; set; }
+        public Image Image { get; set; }
+
+        public int ImageId { get; set; }
 
         }
     }

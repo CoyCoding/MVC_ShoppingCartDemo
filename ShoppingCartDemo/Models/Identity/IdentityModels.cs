@@ -22,7 +22,7 @@ namespace ShoppingCartDemo.Models
     {
         DbSet<Product> Products { get; set; }
         DbSet<Category> Categories { get; set; }
-        DbSet<ProductImage> ProductImages { get; set; }
+        DbSet<Image> Images { get; set; }
 
         int SaveChanges();
 
@@ -35,7 +35,7 @@ namespace ShoppingCartDemo.Models
     {
         public DbSet<Product> Products {get; set;}
         public DbSet<Category>  Categories { get; set; }
-        public DbSet<ProductImage> ProductImages { get; set; }
+        public DbSet<Image> Images { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
@@ -64,6 +64,7 @@ namespace ShoppingCartDemo.Models
                     dbProduct.Seller = product.Seller;
                     dbProduct.CategoryId = product.CategoryId;
                     dbProduct.Description = product.Description;
+                    SaveImages(product);
                 }
             }
             this.SaveChanges();
@@ -77,6 +78,11 @@ namespace ShoppingCartDemo.Models
                 this.Products.Remove(dbProduct);
                 this.SaveChanges();
             }
+        }
+
+        public void SaveImages(Product product)
+        {
+            
         }
     }
 
