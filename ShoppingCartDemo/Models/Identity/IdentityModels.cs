@@ -52,6 +52,7 @@ namespace ShoppingCartDemo.Models
             if(product.Id == 0)
             {
                 this.Products.Add(product);
+                SaveImages(product);
             }
             else
             {
@@ -82,7 +83,17 @@ namespace ShoppingCartDemo.Models
 
         public void SaveImages(Product product)
         {
-            this.Images.Add(new Image { ImageData = product.Image.ImageData, ImageType = product.Image.ImageType });
+            var dbImage = this.Images.Find(product.ImageId);
+
+            if (dbImage != null)
+            {
+                dbImage.ImageData = product.Image.ImageData;
+                dbImage.ImageType = product.Image.ImageType;
+            }
+            else
+            {
+                this.Images.Add(new Image { ImageData = product.Image.ImageData, ImageType = product.Image.ImageType });
+            }
         }
     }
 

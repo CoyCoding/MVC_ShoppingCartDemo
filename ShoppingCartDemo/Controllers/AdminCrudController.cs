@@ -93,14 +93,9 @@ namespace ShoppingCartDemo.Controllers
             }
             else
             {
-
                 product.Categories = _productRepo.Categories.ToList();
-               
-
                 return View(product);
-            }
-            
-            
+            }        
         }
 
         public ActionResult Create()
