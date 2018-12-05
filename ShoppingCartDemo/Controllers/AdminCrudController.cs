@@ -58,7 +58,7 @@ namespace ShoppingCartDemo.Controllers
         public ActionResult Edit(int Id)
         {
            
-            var product = _productRepo.Products.Include(p => p.Category)
+            var product = _productRepo.Products.Include(p => p.Category).Include(p => p.Image)
                 .FirstOrDefault(p => p.Id == Id);
 
             if(product == null)
@@ -75,31 +75,29 @@ namespace ShoppingCartDemo.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(Product product, HttpPostedFileBase images = null)
+        public ActionResult Edit(ProductViewModel product, HttpPostedFileBase Image = null)
         {
             if (ModelState.IsValid)
             {
-                if(images != null)
+                Product productDto = product.ConvertToProduct();
+
+                if (Image != null)
                 {
-                    var test = images;
-                    var test1 = 1;
-                    //foreach(var image in images)
-                    //{
-                        
-                    //}
+                    productDto.Image.ImageType = Image.ContentType;
+                    productDto.Image.ImageData = new byte[Image.ContentLength];
+                    Image.InputStream.Read(productDto.Image.ImageData, 0, Image.ContentLength);
                 }
-                _productRepo.SaveProduct(product);
+                _productRepo.SaveProduct(productDto);
                 TempData["message"] = string.Format("{0} has beed edited succesfully", product.Name);
                 return RedirectToAction("Index");
             }
             else
             {
-                var productViewModel = new ProductViewModel(product)
-                {
-                    Categories = _productRepo.Categories.ToList()
-                };
 
-                return View(productViewModel);
+                product.Categories = _productRepo.Categories.ToList();
+               
+
+                return View(product);
             }
             
             
@@ -129,7 +127,7 @@ namespace ShoppingCartDemo.Controllers
                 return RedirectToAction("Index");
             }
 
-            var product = _productRepo.Products.Include(p => p.Category)
+            var product = _productRepo.Products.Include(p => p.Category).Include(p => p.Image)
                 .SingleOrDefault(p => p.Id == Id);
             
             var productViewModel = new ProductViewModel(product)

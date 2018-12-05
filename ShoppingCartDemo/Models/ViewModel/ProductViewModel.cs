@@ -19,7 +19,6 @@ namespace ShoppingCartDemo.Models.ViewModel
         [Display(Name = "Product Name")]
         public string Name { get; set; }
 
-        
         [DataType(DataType.MultilineText)]
         [Required(ErrorMessage = "Please enter a Description")]
         public string Description { get; set; }
@@ -37,7 +36,11 @@ namespace ShoppingCartDemo.Models.ViewModel
         [Required(ErrorMessage = "Please enter a Seller")]
         public string Seller { get; set; }
 
-        public Image Image { get; set; }
+        public int ImageId { get; set; }
+
+        public byte[] ImageData { get; set; }
+
+        public string ImageType { get; set; }
 
         public ProductViewModel()
         {
@@ -53,8 +56,24 @@ namespace ShoppingCartDemo.Models.ViewModel
             Quantity = product.Quantity;
             CategoryId = product.CategoryId;
             Seller = product.Seller;
-            Image = product.Image;
+            ImageData = product.Image.ImageData;
+            ImageType = product.Image.ImageType;
         }
 
+        public Product ConvertToProduct()
+        {
+            Product returnProduct = new Product
+            {
+                Id = Id,
+                Name = Name,
+                Description = Description,
+                Price = Price,
+                Quantity = Quantity,
+                CategoryId = CategoryId,
+                Seller = Seller,
+                Image = new Image()
+            };
+            return returnProduct;
+        }
     }
 }

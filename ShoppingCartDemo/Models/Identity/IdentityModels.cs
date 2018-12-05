@@ -82,7 +82,7 @@ namespace ShoppingCartDemo.Models
 
         public void SaveImages(Product product)
         {
-            
+            this.Images.Add(new Image { ImageData = product.Image.ImageData, ImageType = product.Image.ImageType });
         }
     }
 

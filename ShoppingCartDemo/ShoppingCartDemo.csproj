@@ -249,6 +249,10 @@
     <Compile Include="Migrations\201812042323381_imagesconnection.Designer.cs">
       <DependentUpon>201812042323381_imagesconnection.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812042329408_imagesconnection1.cs" />
+    <Compile Include="Migrations\201812042329408_imagesconnection1.Designer.cs">
+      <DependentUpon>201812042329408_imagesconnection1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Binder\CartBinder.cs" />
     <Compile Include="Models\CartCalculator\CartDiscount.cs" />
@@ -425,6 +429,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812042323381_imagesconnection.resx">
       <DependentUpon>201812042323381_imagesconnection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812042329408_imagesconnection1.resx">
+      <DependentUpon>201812042329408_imagesconnection1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

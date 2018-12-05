@@ -18,8 +18,6 @@ namespace ShoppingCartDomain.Entities
         [Display(Name = "Product Name")]
         public string Name { get; set; }
 
-
-
         [DataType(DataType.MultilineText)]
         [Required(ErrorMessage = "Please enter a Description")]
         public string Description { get; set; }
@@ -42,7 +40,7 @@ namespace ShoppingCartDomain.Entities
 
         public Image Image { get; set; }
 
-        public int ImageId { get; set; }
+        public int? ImageId { get; set; }
 
         }
     }
