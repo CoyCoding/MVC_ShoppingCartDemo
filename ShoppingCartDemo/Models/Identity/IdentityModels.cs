@@ -65,21 +65,13 @@ namespace ShoppingCartDemo.Models
                     dbProduct.Seller = product.Seller;
                     dbProduct.CategoryId = product.CategoryId;
                     dbProduct.Description = product.Description;
-                    SaveImages(product);
+                    dbProduct.Image = product.Image;
                 }
             }
             this.SaveChanges();
         }
 
-        public void DeleteProduct(int id)
-        {
-            Product dbProduct = this.Products.Find(id);
-            if(dbProduct != null)
-            {
-                this.Products.Remove(dbProduct);
-                this.SaveChanges();
-            }
-        }
+       
 
         public void SaveImages(Product product)
         {
@@ -94,6 +86,24 @@ namespace ShoppingCartDemo.Models
             {
                 this.Images.Add(new Image { ImageData = product.Image.ImageData, ImageType = product.Image.ImageType });
             }
+            this.SaveChanges();
+        }
+
+        public void DeleteProduct(int id)
+        {
+            Product dbProduct = this.Products.Find(id);
+            Image dbImage = this.Images.Find(dbProduct.ImageId);
+
+            if (dbProduct != null)
+            {
+                this.Products.Remove(dbProduct);
+                this.SaveChanges();
+            }
+        }
+
+        public void DeleteImage()
+        {
+
         }
     }
 

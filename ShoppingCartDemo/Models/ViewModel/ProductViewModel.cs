@@ -49,6 +49,17 @@ namespace ShoppingCartDemo.Models.ViewModel
         
         public ProductViewModel(Product product)
         {
+            if(product.Image == null)
+            {
+                ImageData = null;
+                ImageType = null;
+            }
+            else
+            {
+                ImageData = product.Image.ImageData;
+                ImageType = product.Image.ImageType;
+            }
+
             Id = product.Id;
             Name = product.Name;
             Description = product.Description;
@@ -57,8 +68,6 @@ namespace ShoppingCartDemo.Models.ViewModel
             CategoryId = product.CategoryId;
             Seller = product.Seller;
             ImageId = product.ImageId;
-            ImageData = product.Image.ImageData;
-            ImageType = product.Image.ImageType;
         }
 
         public Product ConvertToProduct()

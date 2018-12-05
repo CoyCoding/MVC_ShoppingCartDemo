@@ -42,6 +42,8 @@ namespace ShoppingCartDomain.Entities
 
         public int? ImageId { get; set; }
 
+       
+
         }
     }
 
