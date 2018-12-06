@@ -36,11 +36,8 @@ namespace ShoppingCartDemo.Models.ViewModel
         [Required(ErrorMessage = "Please enter a Seller")]
         public string Seller { get; set; }
 
-        public int? ImageId { get; set; }
-
-        public byte[] ImageData { get; set; }
-
-        public string ImageType { get; set; }
+        [Required]
+        public ICollection<Image> Images { get; set; }
 
         public ProductViewModel()
         {
@@ -49,17 +46,6 @@ namespace ShoppingCartDemo.Models.ViewModel
         
         public ProductViewModel(Product product)
         {
-            if(product.Image == null)
-            {
-                ImageData = null;
-                ImageType = null;
-            }
-            else
-            {
-                ImageData = product.Image.ImageData;
-                ImageType = product.Image.ImageType;
-            }
-
             Id = product.Id;
             Name = product.Name;
             Description = product.Description;
@@ -67,7 +53,7 @@ namespace ShoppingCartDemo.Models.ViewModel
             Quantity = product.Quantity;
             CategoryId = product.CategoryId;
             Seller = product.Seller;
-            ImageId = product.ImageId;
+            Images = product.Images;
         }
 
         public Product ConvertToProduct()
@@ -81,8 +67,7 @@ namespace ShoppingCartDemo.Models.ViewModel
                 Quantity = Quantity,
                 CategoryId = CategoryId,
                 Seller = Seller,
-                ImageId = ImageId,
-                Image = new Image {   ImageData = ImageData, ImageType = ImageType}
+                Images = Images
             };
             return returnProduct;
         }

@@ -30,7 +30,7 @@ namespace ShoppingCartDomain.Entities
         public int Quantity { get; set; }
 
 
-        public Category Category { get; set; }
+        public virtual Category Category { get; set; }
 
         [Required(ErrorMessage = "Please enter a Category")]
         public int CategoryId { get; set; }
@@ -38,12 +38,7 @@ namespace ShoppingCartDomain.Entities
         [Required(ErrorMessage = "Please enter a Seller")]
         public string Seller { get; set; }
 
-        public Image Image { get; set; }
-
-        public int? ImageId { get; set; }
-
-       
-
+        public virtual ICollection<Image> Images { get; set; }
         }
     }
 

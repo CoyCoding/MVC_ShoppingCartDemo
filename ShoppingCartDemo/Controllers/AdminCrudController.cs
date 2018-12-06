@@ -58,7 +58,7 @@ namespace ShoppingCartDemo.Controllers
         public ActionResult Edit(int Id)
         {
            
-            var product = _productRepo.Products.Include(p => p.Category).Include(p => p.Image)
+              var product = _productRepo.Products.Include(p => p.Category).Include(p => p.Images)
                 .FirstOrDefault(p => p.Id == Id);
 
             if(product == null)
@@ -75,26 +75,26 @@ namespace ShoppingCartDemo.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(ProductViewModel product, HttpPostedFileBase Image = null)
+        public ActionResult Edit(ProductViewModel productVM, HttpPostedFileBase Image = null)
         {
+            ModelState.Remove("Images");
             if (ModelState.IsValid)
             {
-                Product productDto = product.ConvertToProduct();
+                Product product = productVM.ConvertToProduct();
 
                 if (Image != null)
                 {
-                    productDto.Image.ImageType = Image.ContentType;
-                    productDto.Image.ImageData = new byte[Image.ContentLength];
-                    Image.InputStream.Read(productDto.Image.ImageData, 0, Image.ContentLength);
+                    Image imageUpload = new Image(Image, product.Id);
+                    product.Images.Add(imageUpload);
                 }
-                _productRepo.SaveProduct(productDto);
+                _productRepo.SaveProduct(product);
                 TempData["message"] = string.Format("{0} has beed edited succesfully", product.Name);
                 return RedirectToAction("Index");
             }
             else
             {
-                product.Categories = _productRepo.Categories.ToList();
-                return View(product);
+                productVM.Categories = _productRepo.Categories.ToList();
+                return View(productVM);
             }        
         }
 
@@ -122,7 +122,7 @@ namespace ShoppingCartDemo.Controllers
                 return RedirectToAction("Index");
             }
 
-            var product = _productRepo.Products.Include(p => p.Category).Include(p => p.Image)
+            var product = _productRepo.Products.Include(p => p.Category)
                 .SingleOrDefault(p => p.Id == Id);
             
             var productViewModel = new ProductViewModel(product)

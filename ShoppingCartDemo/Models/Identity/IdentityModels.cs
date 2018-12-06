@@ -65,7 +65,6 @@ namespace ShoppingCartDemo.Models
                     dbProduct.Seller = product.Seller;
                     dbProduct.CategoryId = product.CategoryId;
                     dbProduct.Description = product.Description;
-                    dbProduct.Image = product.Image;
                 }
             }
             this.SaveChanges();
@@ -75,30 +74,30 @@ namespace ShoppingCartDemo.Models
 
         public void SaveImages(Product product)
         {
-            var dbImage = this.Images.Find(product.ImageId);
+            //var dbImage = this.Images.Find(product.ImageId);
 
-            if (dbImage != null)
-            {
-                dbImage.ImageData = product.Image.ImageData;
-                dbImage.ImageType = product.Image.ImageType;
-            }
-            else
-            {
-                this.Images.Add(new Image { ImageData = product.Image.ImageData, ImageType = product.Image.ImageType });
-            }
-            this.SaveChanges();
+            //if (dbImage != null)
+            //{
+            //    dbImage.ImageData = product.Image.ImageData;
+            //    dbImage.ImageType = product.Image.ImageType;
+            //}
+            //else
+            //{
+            //    this.Images.Add(new Image { ImageData = product.Image.ImageData, ImageType = product.Image.ImageType });
+            //}
+            //this.SaveChanges();
         }
 
         public void DeleteProduct(int id)
         {
-            Product dbProduct = this.Products.Find(id);
-            Image dbImage = this.Images.Find(dbProduct.ImageId);
+            //Product dbProduct = this.Products.Find(id);
+            //Image dbImage = this.Images.Find(dbProduct.ImageId);
 
-            if (dbProduct != null)
-            {
-                this.Products.Remove(dbProduct);
-                this.SaveChanges();
-            }
+            //if (dbProduct != null)
+            //{
+            //    this.Products.Remove(dbProduct);
+            //    this.SaveChanges();
+            //}
         }
 
         public void DeleteImage()
