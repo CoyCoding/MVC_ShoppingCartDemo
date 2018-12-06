@@ -52,7 +52,7 @@ namespace ShoppingCartDemo.Models
             if(product.Id == 0)
             {
                 this.Products.Add(product);
-                SaveImages(product);
+                AddImages(product);
             }
             else
             {
@@ -65,6 +65,7 @@ namespace ShoppingCartDemo.Models
                     dbProduct.Seller = product.Seller;
                     dbProduct.CategoryId = product.CategoryId;
                     dbProduct.Description = product.Description;
+                    AddImages(product);
                 }
             }
             this.SaveChanges();
@@ -72,20 +73,31 @@ namespace ShoppingCartDemo.Models
 
        
 
-        public void SaveImages(Product product)
+        public void AddImages(Product product)
         {
-            //var dbImage = this.Images.Find(product.ImageId);
+            foreach(var image in product.Images)
+            {
+                var dbImage = this.Images.Find(image.Id);
 
-            //if (dbImage != null)
-            //{
-            //    dbImage.ImageData = product.Image.ImageData;
-            //    dbImage.ImageType = product.Image.ImageType;
-            //}
-            //else
-            //{
-            //    this.Images.Add(new Image { ImageData = product.Image.ImageData, ImageType = product.Image.ImageType });
-            //}
-            //this.SaveChanges();
+                if (dbImage != null)
+                {
+                    dbImage.ImageData = image.ImageData;
+                    dbImage.ImageType = image.ImageType;
+                    dbImage.ImageName = image.ImageName;
+                    dbImage.ProductId = product.Id;
+                }
+                else
+                {
+                    this.Images.Add(new Image {
+                        ImageData = image.ImageData,
+                        ImageType = image.ImageType,
+                        ImageName = image.ImageName,
+                        ProductId = product.Id
+                    });
+                }
+            }
+
+            this.SaveChanges();
         }
 
         public void DeleteProduct(int id)
