@@ -10,6 +10,12 @@
     textarea {
         max-width: none;
     }
+
+    .uploaded-image {
+        height: 200px;
+        width: 200px;
+        object-fit: scale-down;
+    }
 </style>
 <h2>Edit</h2>
 
@@ -73,18 +79,20 @@
                     @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
                 </div>
             </div>
-
+@**@
             <div class="form-group col-md-10">
                 <div style="position: relative">
                     <label>Image</label>
-                    <a class='btn' href="">
+                    <a class='btn btn-default' href="">
                         Choose File...
-                        <input type="file" name="Image" size="500"
+                        <input id="file" type="file" name="Image" size="500"
                                style="position:absolute; z-index:2; top: 0; left: 0;filter: alpha(opacity=0); opacity:0; background-color:transparent;color:transparent;"
-                               onchange='$("#upload-file-info").html($(this).val());' />
+                                />
+                            
                     </a>
                     <span class="" id="upload-file-info"></span>
                 </div>
+                <img />
                 @if (Model.Images == null)
                 {
                     <div class="form-control">No Images</div>
@@ -93,9 +101,11 @@
                 {
                     foreach (var image in Model.Images)
                     {
+                    <div>
                         <img class="img-thumbnail" width="150" height="150"
                              src="@Url.Action("GetImage", "Home", new { image.Id })" />
-                             @Html.ActionLink("Delete Image", "DeleteImage", "Home",new { imageId= image.Id, productId = Model.Id }, null)
+                        @Html.ActionLink("Delete Image", "DeleteImage", "Home", new { imageId = image.Id, productId = Model.Id }, null)
+                    </div>
                     }
                 }
             </div>
@@ -118,5 +128,31 @@
 @section Scripts
 {
     @Scripts.Render("~/bundles/jqueryval")
+<script>
+    $(document).ready( () => {
+        function previewFile() {
+            
+            var preview = document.querySelector('img'); //selects the query named img
+            var file = document.querySelector('input[type=file]').files[0];
+            var reader = new FileReader();
+
+            reader.onloadend = function () {
+                preview.classList.add('uploaded-image');
+                preview.src = reader.result;
+            }
+
+            if (file) {
+                reader.readAsDataURL(file); //reads the data as a URL
+            } else {
+                preview.src = "";
+            }
+        }
+        $("#file").change(() => {
+            alert('test');
+            $('#upload-file-info').html($('#file').val());
+            previewFile();
+        });
+    });
+    </script>
 }
 
