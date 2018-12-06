@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     <link href="~/Content/CheckoutErrors.css" rel="stylesheet" />
 }
-<style>
+    <style>
     input,
     select,
     textarea {
@@ -12,11 +12,45 @@
     }
 
     .uploaded-image {
-        height: 200px;
         width: 200px;
-        object-fit: scale-down;
+        height: 200px;
+        object-fit: cover;
+        float: right;
     }
-</style>
+
+        .image-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding-bottom: 50px;
+        }
+
+        @@media only screen and (max-width: 991px){
+            .align-image-upload {
+                display: -webkit-flexbox;
+                display: -webkit-flex;
+                display: flex;
+                flex: auto;
+                justify-content: center;
+                flex-flow: wrap;
+             }
+        }
+
+    .img-with-text {
+        display: inline-block;
+        text-align: center;
+        width: 150px;
+    }
+
+        .img-with-text img {
+            display: block;
+            margin: 0 auto;
+        }
+
+        .img-with-text a{
+            text-align: center;
+        }
+    </style>
 <h2>Edit</h2>
 
 @using (Html.BeginForm("Edit", "AdminCrud", 
@@ -81,18 +115,21 @@
             </div>
 @**@
             <div class="form-group col-md-10">
-                <div style="position: relative">
-                    <label>Image</label>
-                    <a class='btn btn-default' href="">
-                        Choose File...
-                        <input id="file" type="file" name="Image" size="500"
-                               style="position:absolute; z-index:2; top: 0; left: 0;filter: alpha(opacity=0); opacity:0; background-color:transparent;color:transparent;"
-                                />
-                            
-                    </a>
-                    <span class="" id="upload-file-info"></span>
+                <div class="align-image-upload">
+                    <div>
+                        <label>Image</label>
+                        <input id="file" type="file" name="Image" size="400"
+                               style="" />
+
+
+                        <span class="" id="upload-file-info"></span>
+
+                    </div>
+                    <img />
                 </div>
-                <img />
+            </div>   
+
+            <div class="col-md-10 image-list">    
                 @if (Model.Images == null)
                 {
                     <div class="form-control">No Images</div>
@@ -101,7 +138,7 @@
                 {
                     foreach (var image in Model.Images)
                     {
-                    <div>
+                    <div class="img-with-text">
                         <img class="img-thumbnail" width="150" height="150"
                              src="@Url.Action("GetImage", "Home", new { image.Id })" />
                         @Html.ActionLink("Delete Image", "DeleteImage", "Home", new { imageId = image.Id, productId = Model.Id }, null)
@@ -109,17 +146,13 @@
                     }
                 }
             </div>
+            
 
             <div class="form-group col-md-6">
-                <div class="offset-10">
+                <div class="">
                     <input type="submit" value="Save" class="btn btn-default" />
+                    @Html.ActionLink("Back to List", "Index")
                 </div>
-            </div>
-
-
-
-            <div class="form-group col-md-6">
-                @Html.ActionLink("Back to List", "Index")
             </div>
         </div>
     </div>
@@ -145,6 +178,7 @@
                 reader.readAsDataURL(file); //reads the data as a URL
             } else {
                 preview.src = "";
+                preview.classList.remove('uploaded-image');
             }
         }
         $("#file").change(() => {
