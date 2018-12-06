@@ -29,6 +29,8 @@ namespace ShoppingCartDemo.Models
         void SaveProduct(Product product);
 
         void DeleteProduct(int id);
+
+        void DeleteImageFromDB(int Id);
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IApplicationDbContext
@@ -112,9 +114,14 @@ namespace ShoppingCartDemo.Models
             //}
         }
 
-        public void DeleteImage()
+        public void DeleteImageFromDB(int Id)
         {
-
+            var image = Images.Find(Id);
+            if (image != null)
+            {
+                this.Images.Remove(image);
+            }
+            SaveChanges();
         }
     }
 

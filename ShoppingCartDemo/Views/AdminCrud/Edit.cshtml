@@ -85,14 +85,18 @@
                     </a>
                     <span class="" id="upload-file-info"></span>
                 </div>
-                @if (Model.Images == null)    
+                @if (Model.Images == null)
                 {
                     <div class="form-control">No Images</div>
                 }
                 else
                 {
-                    <img class="img-thumbnail" width="150" height="150" 
-                         src="@Url.Action("GetImage", "Home", new { Model.Images.First().Id })" />
+                    foreach (var image in Model.Images)
+                    {
+                        <img class="img-thumbnail" width="150" height="150"
+                             src="@Url.Action("GetImage", "Home", new { image.Id })" />
+                             @Html.ActionLink("Delete Image", "DeleteImage", "Home",new { imageId= image.Id, productId = Model.Id }, null)
+                    }
                 }
             </div>
 

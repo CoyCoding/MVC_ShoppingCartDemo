@@ -78,5 +78,11 @@ namespace ShoppingCartDemo.Controllers
             }
             return null;
         }
+
+        public ActionResult DeleteImage(int imageId, int productId) 
+        {
+            _productRepo.DeleteImageFromDB(imageId);
+            return RedirectToAction("Edit/"+ productId, "AdminCrud");
+        }
     }
 }
