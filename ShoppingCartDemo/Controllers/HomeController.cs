@@ -71,11 +71,10 @@ namespace ShoppingCartDemo.Controllers
 
         public FileContentResult GetImage(int Id)
         {
-            Product product = _productRepo.Products.Include(p => p.Images)
-                .FirstOrDefault(p => p.Id == Id);
-            if (product != null)
+            Image image = _productRepo.Images.SingleOrDefault(i => i.Id == Id);
+            if (image != null)
             {
-                return File(product.Images.ToArray()[0].ImageData, product.Images.ToArray()[0].ImageType);
+                return File(image.ImageData, image.ImageType);
             }
             return null;
         }
