@@ -3,63 +3,9 @@
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
     <link href="~/Content/CheckoutErrors.css" rel="stylesheet" />
+    <link href="~/Content/Edit.css" rel="stylesheet" />
 }
-    <style>
-    input,
-    select,
-    textarea {
-        max-width: none;
-    }
-
-    .uploaded-image {
-        width: 200px;
-        height: 200px;
-        object-fit: cover;
-        float: right;
-    }
-
-        .image-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            padding-bottom: 50px;
-        }
-
-        @@media only screen and (max-width: 991px){
-            .align-image-upload {
-                display: -webkit-flexbox;
-                display: -webkit-flex;
-                display: flex;
-                flex: auto;
-                justify-content: center;
-                flex-flow: wrap;
-             }
-        }
-
-        .align-image-upload {
-            display: -webkit-flexbox;
-            display: -webkit-flex;
-            display: flex;
-            flex: auto;
-            justify-content: center;
-            flex-flow: wrap;
-        }
-
-    .img-with-text {
-        display: inline-block;
-        text-align: center;
-        width: 150px;
-    }
-
-        .img-with-text img {
-            display: block;
-            margin: 0 auto;
-        }
-
-        .img-with-text a{
-            text-align: center;
-        }
-    </style>
+    
 <h2>Edit</h2>
 
 @using (Html.BeginForm("Edit", "AdminCrud", 
@@ -125,9 +71,9 @@
 @**@
             <div class="form-group col-md-10">
                 <label class="control-label" for="Image">Image</label>
-                <div>
+                <div >
                     <input id="file" type="file" name="Image" />
-                    <div>
+                    <div class="uploaded-image-div">
                         <img />
                     </div>
                 </div>
