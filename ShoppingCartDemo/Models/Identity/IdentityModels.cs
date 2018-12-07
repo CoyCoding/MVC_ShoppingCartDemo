@@ -28,7 +28,7 @@ namespace ShoppingCartDemo.Models
 
         void SaveProduct(Product product);
 
-        void DeleteProduct(int id);
+        void DeleteProductFromDB(int id);
 
         void DeleteImageFromDB(int Id);
     }
@@ -102,16 +102,16 @@ namespace ShoppingCartDemo.Models
             this.SaveChanges();
         }
 
-        public void DeleteProduct(int id)
+        public void DeleteProductFromDB(int id)
         {
-            //Product dbProduct = this.Products.Find(id);
+            Product dbProduct = this.Products.Find(id);
             //Image dbImage = this.Images.Find(dbProduct.ImageId);
 
-            //if (dbProduct != null)
-            //{
-            //    this.Products.Remove(dbProduct);
-            //    this.SaveChanges();
-            //}
+            if (dbProduct != null)
+            {
+                this.Products.Remove(dbProduct);
+                this.SaveChanges();
+            }
         }
 
         public void DeleteImageFromDB(int Id)

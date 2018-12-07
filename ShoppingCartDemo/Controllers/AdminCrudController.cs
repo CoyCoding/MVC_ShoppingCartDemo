@@ -111,7 +111,7 @@ namespace ShoppingCartDemo.Controllers
         [HttpDelete]
         public ActionResult Delete(int Id)
         {
-            _productRepo.DeleteProduct(Id);
+            _productRepo.DeleteProductFromDB(Id);
             return RedirectToAction("Index");
         }
 

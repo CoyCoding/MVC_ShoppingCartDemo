@@ -44,7 +44,9 @@
                     <div id="edit-details-delete">
                         @Html.ActionLink("Edit", "Edit", new { Id = item.Id }) |
                         @Html.ActionLink(" Details ", "Details", new { Id=item.Id  }) |
-                        @using (Html.BeginForm(" Delete", "AdminCrud"))
+                        
+                        
+                        @using (Html.BeginForm("Delete", "AdminCrud", "Delete"))
                         {
                             @Html.HttpMethodOverride(HttpVerbs.Delete)
                             @Html.Hidden("Id", item.Id)
