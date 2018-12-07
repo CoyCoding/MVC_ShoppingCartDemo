@@ -36,6 +36,15 @@
              }
         }
 
+        .align-image-upload {
+            display: -webkit-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            flex: auto;
+            justify-content: center;
+            flex-flow: wrap;
+        }
+
     .img-with-text {
         display: inline-block;
         text-align: center;
@@ -83,7 +92,7 @@
             </div>
 
             <div class="form-group col-md-10">
-                @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label" })
                 <div class="">
                     @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
@@ -91,7 +100,7 @@
             </div>
 
             <div class="form-group col-md-10">
-                @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label" })
                 <div class="">
                     @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
@@ -99,7 +108,7 @@
             </div>
 
             <div class="form-group col-md-10">
-                @Html.LabelFor(model => model.Seller, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.Seller, htmlAttributes: new { @class = "control-label" })
                 <div class="">
                     @Html.EditorFor(model => model.Seller, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Seller, "", new { @class = "text-danger" })
@@ -107,7 +116,7 @@
             </div>
 
             <div class="form-group col-md-10">
-                @Html.LabelFor(model => model.CategoryId, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.CategoryId, htmlAttributes: new { @class = "control-label" })
                 <div class="">
                     @Html.DropDownListFor(m => m.CategoryId, new SelectList(Model.Categories, "Id", "Name"), "Select Category", new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
@@ -115,18 +124,14 @@
             </div>
 @**@
             <div class="form-group col-md-10">
-                <div class="align-image-upload">
+                <label class="control-label" for="Image">Image</label>
+                <div>
+                    <input id="file" type="file" name="Image" />
                     <div>
-                        <label>Image</label>
-                        <input id="file" type="file" name="Image" size="400"
-                               style="" />
-
-
-                        <span class="" id="upload-file-info"></span>
-
+                        <img />
                     </div>
-                    <img />
                 </div>
+                    
             </div>   
 
             <div class="col-md-10 image-list">    
