@@ -6,7 +6,7 @@
 
             @if (Model.Images.Count() != 0)
             {
-                <img class="img-thumbnail" width="150" height="150"
+                <img class="img-thumbnail"
                      src="@Url.Action("GetImage", "Home", new { Model.Images.First().Id })" />
             }
 
