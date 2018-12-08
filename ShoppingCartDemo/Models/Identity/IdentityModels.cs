@@ -105,7 +105,6 @@ namespace ShoppingCartDemo.Models
         public void DeleteProductFromDB(int id)
         {
             Product dbProduct = this.Products.Find(id);
-            //Image dbImage = this.Images.Find(dbProduct.ImageId);
 
             if (dbProduct != null)
             {

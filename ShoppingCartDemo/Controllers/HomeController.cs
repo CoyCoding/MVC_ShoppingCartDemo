@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using ShoppingCartDemo.Models;
 using ShoppingCartDemo.Models.HtmlHelpers;
 using ShoppingCartDomain.Entities;
+using System.Threading.Tasks;
 
 namespace ShoppingCartDemo.Controllers
 {
@@ -40,7 +41,7 @@ namespace ShoppingCartDemo.Controllers
 
             var productList = new ProductListViewModel
             {
-                Products = _productRepo.Products
+                Products = _productRepo.Products.Include(p => p.Images)
                 .Where(p => category == null || p.CategoryId == _productRepo.Categories.FirstOrDefault(c => c.Name == category).Id)
                 .OrderBy(p => p.Id)
                 .Skip((page - 1) * _PageSize)
@@ -71,11 +72,13 @@ namespace ShoppingCartDemo.Controllers
 
         public FileContentResult GetImage(int Id)
         {
-            Image image = _productRepo.Images.SingleOrDefault(i => i.Id == Id);
+            Image image =  _productRepo.Images.Find(Id);
+
             if (image != null)
             {
                 return File(image.ImageData, image.ImageType);
             }
+
             return null;
         }
 

@@ -4,16 +4,24 @@
         <div class="product-card-bg col-12 border-info border rounded">
             <b class="">@String.Format(Model.Name):</b>
 
+            @if (Model.Images.Count() != 0)
+            {
+                <img class="img-thumbnail" width="150" height="150"
+                     src="@Url.Action("GetImage", "Home", new { Model.Images.First().Id })" />
+            }
+
+
+
             @using (Html.BeginForm("AddToCart", "Cart"))
-             {
+            {
                 <div>
-                @Html.HiddenFor(p => p.Id)
-                @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
-                <input type="submit" class="btn-sm btn-success" value="Add to cart" />
-                @*<span class="badge badge-info float-right price-shadow">@String.Format("{0:C}", Model.Price)</span>*@
-             </div>
-             }
-             <span class="product-discript">@Model.Description</span>
+                    @Html.HiddenFor(p => p.Id)
+                    @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                    <input type="submit" class="btn-sm btn-success" value="Add to cart" />
+                    <span class="badge badge-info float-right price-shadow">@String.Format("{0:C}", Model.Price)</span>
+                </div>
+            }
+            <span class="product-discript">@Model.Description</span>
         </div>
     </div>
 

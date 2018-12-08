@@ -52,12 +52,13 @@
             @Model.Seller
         </td>
         <td>
-            @foreach(var image in Model.Images)
+            @foreach (var image in Model.Images)
             {
-            <img class="img-thumbnail" width="150" height="150"
-                 src="@Url.Action("GetImage", "Home", new { image.Id })" />
+                <img class="img-thumbnail" width="150" height="150"
+                     src="@Url.Action("GetImage", "Home", new { image.Id })" />
+                
             }
-            
+
         </td>
     </tr>
 
