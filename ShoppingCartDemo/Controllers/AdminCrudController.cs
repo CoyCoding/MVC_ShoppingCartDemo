@@ -102,7 +102,8 @@ namespace ShoppingCartDemo.Controllers
         {
             var productViewModel = new ProductViewModel()
             {
-                Categories = _productRepo.Categories.ToList()
+                Categories = _productRepo.Categories.ToList(),
+                Images = new List<Image>()
             };
 
             return View("edit", productViewModel);
