@@ -113,30 +113,36 @@
 {
     @Scripts.Render("~/bundles/jqueryval")
 <script>
-    $(document).ready( () => {
+    $(document).ready(() => {
+
+        $("#file").change(() => {
+            previewFile();
+        });
+
         function previewFile() {
+
+            // selects the query named img
+            var preview = document.querySelector('img'); 
             
-            var preview = document.querySelector('img'); //selects the query named img
+            //selects the image from the input to display
             var file = document.querySelector('input[type=file]').files[0];
             var reader = new FileReader();
 
+            //when file is loaded display it
             reader.onloadend = function () {
                 preview.classList.add('uploaded-image');
                 preview.src = reader.result;
             }
 
+
+            // load file to reader or display nothing if null
             if (file) {
-                reader.readAsDataURL(file); //reads the data as a URL
+                reader.readAsDataURL(file); 
             } else {
                 preview.src = "";
                 preview.classList.remove('uploaded-image');
             }
         }
-        $("#file").change(() => {
-            alert('test');
-            $('#upload-file-info').html($('#file').val());
-            previewFile();
-        });
     });
     </script>
 }
