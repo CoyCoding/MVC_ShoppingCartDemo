@@ -7,7 +7,7 @@ using System.Web;
 
 namespace ShoppingCartDemo.Infrastructure
 {
-    public class LogModule
+    public class LogModule : IHttpModule
     {
         private static int sharedCounter = 0;
         private int requestCounter;
