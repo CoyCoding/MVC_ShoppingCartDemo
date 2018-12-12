@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
 using ShoppingCartDemo.Models.ViewModel;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace ShoppingCartDemo.Controllers
 {
@@ -132,6 +133,16 @@ namespace ShoppingCartDemo.Controllers
             };
 
             return View(productViewModel);
+        }
+
+        public ActionResult UserControl()
+        {
+            return View(UserManager.Users);
+        }
+
+        private ApplicationUserManager UserManager
+        {
+            get { return HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>(); }
         }
     }
 

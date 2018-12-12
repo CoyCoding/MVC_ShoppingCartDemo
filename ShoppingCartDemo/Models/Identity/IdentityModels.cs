@@ -18,6 +18,7 @@ namespace ShoppingCartDemo.Models
             return userIdentity;
         }
     }
+
     public interface IApplicationDbContext
     {
         DbSet<Product> Products { get; set; }
@@ -72,8 +73,6 @@ namespace ShoppingCartDemo.Models
             }
             this.SaveChanges();
         }
-
-       
 
         public void AddImages(Product product)
         {
