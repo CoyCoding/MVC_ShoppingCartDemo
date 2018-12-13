@@ -8,6 +8,10 @@ namespace ShoppingCartDemo.Models
         [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Required]
+        [Display(Name = "User Name")]
+        public string UserName { get; set; }
     }
 
     public class ExternalLoginListViewModel
@@ -64,6 +68,10 @@ namespace ShoppingCartDemo.Models
 
     public class RegisterViewModel
     {
+        [Required]
+        [Display(Name = "User Name")]
+        public string UserName { get; set; }
+            
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
